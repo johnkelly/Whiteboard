@@ -6,9 +6,7 @@
       Learn more
       <i class="icon-question-sign icon-white"></i>
     </a>
-    <a class="btn btn-success btn-large">
-      Sign Up
-      <i class="icon-plus-sign icon-white"></i>
-    </a>
+    <%= link_to "Sign Up <i class='icon-plus-sign icon-white'></i>".html_safe, new_user_registration_path,
+     class: "btn btn-success" %>
   </p>
 </div>
