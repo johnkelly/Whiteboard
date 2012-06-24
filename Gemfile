@@ -9,7 +9,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.0.3.1'
-  gem 'bootswatch-rails', '~> 0.0.11'
+  gem 'bootswatch-rails', git: 'git://github.com/maxim/bootswatch-rails.git'
 end
 
 group :development, :test do
