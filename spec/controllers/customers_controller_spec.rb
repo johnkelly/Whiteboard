@@ -19,8 +19,14 @@ describe CustomersController do
       it { should set_the_flash }
       it { should redirect_to(root_url)}
     end
-    
+
     context "Update Billing Info" do
+      it "modifies the credit card but doesn't create a new customer" do
+        @user.stripe_customer_token = "C12345"
+        @user.save!
+        post :create, customer: { stripe_card_token: "12345" }
+        @user.reload.stripe_customer_token.should == "C12345"
+      end
     end
   end
 end
