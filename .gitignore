@@ -18,3 +18,4 @@ pickle-email-*.html
 /config/s3.yml
 /config/secret_token.yml
 /config/stripe.yml
+routes.txt
