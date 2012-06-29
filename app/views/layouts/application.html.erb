@@ -20,7 +20,7 @@
       <%= link_to "WhiteBoard", root_path, class: "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe %></li>
+          <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe, plans_path %></li>
         </ul>
         <ul class="nav pull-right">
           <%- if current_user -%>

@@ -33,4 +33,8 @@ class User < ActiveRecord::Base
       customer.delete
     end
   end
+
+  def customer?
+    stripe_customer_token.present?
+  end
 end

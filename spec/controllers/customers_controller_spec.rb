@@ -17,7 +17,7 @@ describe CustomersController do
     context "Add Billing Info for first time" do
       before {post :create, customer: { stripe_card_token: "12345"} }
       it { should set_the_flash }
-      it { should redirect_to(root_url)}
+      it { should redirect_to(plans_url)}
     end
 
     context "Update Billing Info" do

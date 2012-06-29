@@ -16,4 +16,16 @@ describe User do
       @user.destroy
     end
   end
+
+  describe "customer?" do
+    it "returns true if the user has added billing info to stripe" do
+      @user.stripe_customer_token = "C12345"
+      @user.save!
+      @user.customer?.should be_true
+    end
+
+    it "returns false if not a stripe customer" do
+      @user.customer?.should be_false
+    end
+  end
 end

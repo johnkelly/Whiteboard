@@ -27,5 +27,6 @@ subscription =
       $('#customer_stripe_card_token').val(response.id)
       $('form')[0].submit()
     else
+      $('#stripe_error').removeClass('hide')
       $('#stripe_error').text(response.error.message)
       $('input[type=submit]').removeAttr('disabled')

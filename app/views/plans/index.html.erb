@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h1>Subscription Plans</h1>
+</div>
+
+<p>
+Upgrade or downgrade your account at any time.  The credit/debt will be reflected on your next month's payment. Payments are for the full month.
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Feature</td>
+      <td>Trial</td>
+      <td>Basic</td>
+      <td>Professional</td>
+      <td>Elite</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Storage</td>
+      <td>5 MB</td>
+      <td>3 GB</td>
+      <td>15 GB</td>
+      <td>50 GB</td>
+    </tr>
+    <tr>
+      <td>Real time sharing</td>
+      <td><i class="icon-remove icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+    </tr>
+    <tr>
+      <td>Auto-save</td>
+      <td><i class="icon-remove icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+    </tr>
+    <tr>
+      <td>Daily Backups</td>
+      <td><i class="icon-remove icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+    </tr>
+    <tr>
+      <td>Future Features</td>
+      <td><i class="icon-remove icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+      <td><i class="icon-ok icon-white"></i></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td>Free</td>
+      <td>$19/month</td>
+      <td>$49/month</td>
+      <td>$99/month</td>
+    </tr>
+    <%- if current_user.try(:customer?) -%>
+      <tr>
+        <td>Select</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
+        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
+        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
+      </tr>
+      </tbody>
+      </table>
+    <%- elsif current_user -%>
+      </tbody>
+      </table>
+      <div class="center">
+        <%= link_to "Add Billing Info to Subscribe", new_customer_path, class: "btn btn-success" %>
+      </div>   
+    <%- else -%>
+      </tbody>
+      </table>
+      <div class="center">
+        <%= link_to "Sign Up Today!", new_user_registration_path, class: "btn btn-success" %>
+      </div>
+    <%- end -%>

@@ -10,7 +10,7 @@
   <h2>Credit Card Information</h2>
   <%= form_for :customer, url: customers_url, id: "new_customer" do |f| %>
     <%= f.hidden_field :stripe_card_token %>
-  <div id="stripe_error">
+  <div id="stripe_error" class="alert alert-error hide">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
   <%- if current_user.stripe_card_token.present? -%>
