@@ -63,9 +63,9 @@ Upgrade or downgrade your account at any time.  The credit/debt will be reflecte
       <tr>
         <td>Select</td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
-        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
-        <td><%= link_to "Subscribe", "", class: "btn btn-success" %></td>
+        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 1), method: :post, class: "btn btn-success" %></td>
+        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 2), method: :post, class: "btn btn-success" %></td>
+        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 3), method: :post, class: "btn btn-success" %></td>
       </tr>
       </tbody>
       </table>

@@ -3,4 +3,5 @@ Whiteboard::Application.routes.draw do
   devise_for :users
   resources :customers, only: %w[new create]
   resources :plans, only: %w[index]
+  resources :subscriptions, only: %w[create destroy]
 end
