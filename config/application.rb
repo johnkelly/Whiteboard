@@ -58,5 +58,8 @@ module Whiteboard
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Stop heroku from looking to database during precompile
+    config.assets.initialize_on_precompile = false
   end
 end
