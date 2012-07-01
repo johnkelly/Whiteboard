@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'pg', '~> 0.14.0'
 gem 'devise', '~> 2.1.2'
 gem 'stripe', '~> 1.7.0'
+gem 'thin', '~> 1.3.1'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

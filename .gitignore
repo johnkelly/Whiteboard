@@ -19,3 +19,4 @@ pickle-email-*.html
 /config/secret_token.yml
 /config/stripe.yml
 routes.txt
+.DS_Store
