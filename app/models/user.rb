@@ -9,23 +9,39 @@ class User < ActiveRecord::Base
   before_destroy :delete_stripe_customer, if: :stripe_customer_token
 
   def save_stripe_customer
-    if valid?
-      unless Rails.env.test?
-        if stripe_customer_token
-          customer = Stripe::Customer.retrieve(stripe_customer_token)
-          customer.card = stripe_card_token
-          customer.save
-        else
-          customer = Stripe::Customer.create(email: email, card: stripe_card_token)
-          self.stripe_customer_token = customer.id
-        end
+    if valid? && valid_credit_card?
+      if customer?
+        update_existing_stripe_customer
+      else
+        create_new_stripe_customer
       end
       save!
+    else
+      false
     end
-  rescue Stripe::InvalidRequestError => e
-    logger.error "Stripe error while creating customer: #{e.message}"
-    errors.add :base, "There was a problem with your credit card."
+  rescue Stripe::StripeError => e
+    logger.error "Stripe error while subscribing customer: #{e.message}"
+    self.stripe_card_token = nil
     false
+  end
+
+  def customer?
+    stripe_customer_token.present?
+  end
+
+  def create_new_stripe_customer
+    unless Rails.env.test?
+      customer = Stripe::Customer.create(email: email, card: stripe_card_token)
+      self.stripe_customer_token = customer.id
+    end
+  end
+
+  def update_existing_stripe_customer
+    unless Rails.env.test?
+      customer = Stripe::Customer.retrieve(stripe_customer_token)
+      customer.card = stripe_card_token
+      customer.save
+    end
   end
 
   def delete_stripe_customer
@@ -35,7 +51,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def customer?
-    stripe_customer_token.present?
+  private
+
+  def valid_credit_card?
+    unless Rails.env.test?
+      credit_card = Stripe::Token.retrieve(stripe_card_token).card
+      credit_card.cvc_check != "fail" && credit_card.address_zip_check != "fail" && credit_card.address_zip.present? && credit_card.name.present?
+    else
+      true
+    end
   end
 end

@@ -15,12 +15,19 @@ class Subscription < ActiveRecord::Base
       unless Rails.env.test?
         if user.customer?
           customer = Stripe::Customer.retrieve(user.stripe_customer_token)
-          customer.update_subscription(plan: plan_id)
+          if valid_credit_card?(customer)
+            customer.update_subscription(plan: plan_id)
+          else
+            false
+          end
         else
           false
         end
       end
     end
+  rescue Stripe::StripeError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    false
   end
 
   def cancel_stripe_subscription
@@ -45,5 +52,12 @@ class Subscription < ActiveRecord::Base
       else
         "Error"
     end
+  end
+
+  private
+
+  def valid_credit_card?(customer)
+    credit_card = customer.active_card
+    credit_card.cvc_check != "fail" && credit_card.address_zip_check != "fail" && credit_card.address_zip.present? && credit_card.name.present?
   end
 end

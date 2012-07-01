@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
     if current_user.save_stripe_customer
       redirect_to plans_url, :notice => "Your billing information was updated."
     else
+      flash.now[:alert] = "There was a problem with your credit card.  Please check your information."
       render :new
     end
   end

@@ -11,7 +11,7 @@ class SubscriptionsController < ApplicationController
     if @subscription.save
       redirect_to root_url, notice: "Your subscription plan has been updated."
     else
-      redirect_to plans_url, alert: "There was an error changing your subscription plan.  Please try again later."
+      redirect_to plans_url, alert: "There was an error changing your subscription plan.  Please try again later.  If the problem continues, please update your billing information."
     end
   end
 

@@ -13,35 +13,31 @@
   <div id="stripe_error" class="alert alert-error hide">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
-  <%- if current_user.stripe_card_token.present? -%>
-    Credit card has been provided.
-  <%- else -%>
-    <div class="input-prepend">
-        <%= label_tag :card_number, "Credit Card Number" %>
-        <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :card_number, nil, name: nil %>
-    </div>
+  <div class="input-prepend">
+      <%= label_tag :card_number, "Credit Card Number" %>
+      <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :card_number, nil, name: nil %>
+  </div>
 
-    <div class="input-prepend">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-      <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :card_code, nil, name: nil %>
-    </div>
+  <div class="input-prepend">
+    <%= label_tag :card_code, "Security Code on Card (CVC)" %>
+    <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :card_code, nil, name: nil %>
+  </div>
 
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-    </div>
-  <hr/>
-  <h2>Billing Information</h2>
-    <div class="input-prepend">
-      <%= label_tag :full_name, "Full Name as it appears on card" %>
-      <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :full_name, nil, name: nil %>
-    </div>
-    <div class="input-prepend">
-      <%= label_tag :address_zip, "Zip/Postal Code of Billing Address" %>
-      <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :address_zip, nil, name: nil %>
-    </div>
-  <%- end -%>
+  <div class="field">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  </div>
+<hr/>
+<h2>Billing Information</h2>
+  <div class="input-prepend">
+    <%= label_tag :full_name, "Full Name as it appears on card" %>
+    <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :full_name, nil, name: nil %>
+  </div>
+  <div class="input-prepend">
+    <%= label_tag :address_zip, "Zip/Postal Code of Billing Address" %>
+    <span class="add-on"><i class="icon-lock"></i></span><%= text_field_tag :address_zip, nil, name: nil %>
+  </div>
   <hr/>
    <div class="actions">
      <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off" %>
