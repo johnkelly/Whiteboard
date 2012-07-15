@@ -20,7 +20,11 @@
       <%= link_to "WhiteBoard", root_path, class: "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe, plans_path %></li>
+          <%- if current_user.try(:subscription) -%>
+            <li><%= link_to "My Projects <i class='icon-briefcase icon-white'></i>".html_safe, projects_path %></li>
+          <%- else -%>
+            <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe, plans_path %></li>
+          <%- end -%>
         </ul>
         <ul class="nav pull-right">
           <%- if current_user -%>

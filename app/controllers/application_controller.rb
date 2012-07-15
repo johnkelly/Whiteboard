@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
     authenticate_user!
     raise ActiveRecord::RecordNotFound unless current_user.customer?
   end
+
+  def authenticate_subscriber!
+     authenticate_customer!
+    raise ActiveRecord::RecordNotFound unless current_user.subscription.present?
+  end
 end

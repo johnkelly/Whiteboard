@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1 class="inline mr15">My Projects</h1>
+  <%= link_to "New Project", new_project_path, class: "btn btn-info inline" %>
+</div>
+<table class="table">
+<%- @projects.each do |project| -%>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= link_to "Delete", project_path(project), method: :delete, confirm: "Are you sure?", class: "btn btn-warning" %></td>
+  </tr>
+<%- end -%>
+</table>

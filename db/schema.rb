@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629043741) do
+ActiveRecord::Schema.define(:version => 20120715035318) do
+
+  create_table "drawings", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer "subscription_id"
+    t.string  "name"
+  end
+
+  add_index "projects", ["subscription_id"], :name => "index_projects_on_subscription_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer "user_id"

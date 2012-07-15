@@ -15,6 +15,9 @@ input[type="submit"]{
 .center {
   text-align: center;
 }
+.float_right {
+  float: right;
+}
 .mt15{
   margin-top: 15px;
 }
@@ -24,8 +27,16 @@ strong {
 .mb30 {
   margin-bottom: 30px;
 }
+
+.mr15 {
+  margin-right: 15px;
+}
 .inline {
   display: inline;
+}
+
+.btn {
+  border-radius: 15px;
 }
 
 .field_with_errors {
