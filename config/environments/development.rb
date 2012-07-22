@@ -37,4 +37,7 @@ Whiteboard::Application.configure do
 
   #Devise Mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #Show Logging in server terminal window
+  config.middleware.use Rails::Rack::LogTailer
 end
