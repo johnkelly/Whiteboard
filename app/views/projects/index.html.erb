@@ -8,7 +8,7 @@
     <td><%= project.name %></td>
     <td>
       <%= link_to "New Image", new_project_project_image_path(project), class: "btn btn-info" %>
-      <%= link_to "Delete", project_path(project), method: :delete, confirm: "Are you sure?", class: "btn btn-warning" %></td>
+      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning" %></td>
   </tr>
   <%- project.project_images.each do |project_image| -%>
     <tr>
