@@ -3,6 +3,8 @@ class CreateSubscriptions < ActiveRecord::Migration
     create_table(:subscriptions) do |t|
       t.integer :user_id
       t.integer :plan_id
+
+      t.timestamps
     end
 
     add_index :subscriptions, :user_id, :unique => true

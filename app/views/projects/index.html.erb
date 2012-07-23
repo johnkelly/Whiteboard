@@ -2,18 +2,31 @@
   <h1 class="inline mr15">My Projects</h1>
   <%= link_to "New Project", new_project_path, class: "btn btn-info inline" %>
 </div>
-<table class="table">
+<hr/>
+<div>
 <%- @projects.each do |project| -%>
-  <tr>
-    <td><%= project.name %></td>
-    <td>
-      <%= link_to "New Image", new_project_project_image_path(project), class: "btn btn-info" %>
-      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning" %></td>
-  </tr>
-  <%- project.project_images.each do |project_image| -%>
-    <tr>
-      <td><%= cl_image_tag project_image.canvas_url(:thumbnail) %></td>
-    </tr>
-  <%- end -%>
+  <div>
+    <h3>
+      <%= project.name %>
+      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning" %>
+    </h3>
+    <div class="mt15">
+      <%- project.project_images.each do |project_image| -%>
+        <div class="slide">
+          <div class="slide_contents">
+            <%= link_to root_url do %>
+              <%= cl_image_tag project_image.canvas_url(:thumbnail), width: "200", height: "100" %>
+            <%- end -%>
+            <p><%= project_image.updated_at.strftime('%x') %></p>
+          </div>
+        </div>
+      <%- end -%>
+    <div class="slide add_slide">
+      <div class="slide_contents">
+        <%= image_tag "thumbnail_placeholder.gif", width: "200", height: "100" %>
+        <%= link_to "Add WhiteBoard", new_project_project_image_path(project), class: "btn btn-info add_white_board" %>
+      </div>
+    </div>
+  </div>
 <%- end -%>
-</table>
+</div>

@@ -31,6 +31,9 @@ strong {
 .mr15 {
   margin-right: 15px;
 }
+.ml15 {
+  margin-left: 15px;
+}
 .inline {
   display: inline;
 }
@@ -46,4 +49,26 @@ strong {
 #error_explanation {
   margin-bottom: 10px;
   padding-right: 10px;
+}
+.slide {
+  background-color: #AD1D28;
+  text-align: center;
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 15px;
+
+  .slide_contents {
+    padding: 15px 20px 0px 20px;
+    margin-top: 10px;
+  }
+}
+.add_slide {
+  width: 240px;
+  height: 155px;
+  vertical-align: top;
+
+  .add_white_board {
+    position: relative;
+    top: -70px;
+  }
 }

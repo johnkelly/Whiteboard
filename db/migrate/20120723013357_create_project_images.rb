@@ -3,6 +3,8 @@ class CreateProjectImages < ActiveRecord::Migration
     create_table(:project_images) do |t|
       t.integer :project_id
       t.string :canvas
+
+      t.timestamps
     end
 
     add_index :project_images, :project_id
