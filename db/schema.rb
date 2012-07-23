@@ -11,13 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715035318) do
+ActiveRecord::Schema.define(:version => 20120723013357) do
 
   create_table "drawings", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "project_images", :force => true do |t|
+    t.integer "project_id"
+    t.string  "canvas"
+  end
+
+  add_index "project_images", ["project_id"], :name => "index_project_images_on_project_id"
 
   create_table "projects", :force => true do |t|
     t.integer "subscription_id"

@@ -20,3 +20,4 @@ pickle-email-*.html
 /config/stripe.yml
 routes.txt
 .DS_Store
+/public/uploads

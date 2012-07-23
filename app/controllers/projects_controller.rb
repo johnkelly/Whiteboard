@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :find_models
 
   def index
-    @projects = @subscription.projects
+    @projects = @subscription.projects.includes(:project_images)
   end
 
   def new

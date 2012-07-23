@@ -1,0 +1,13 @@
+<div class="page-header center">
+  <h1>New Project Image</h1>
+</div>
+<div class="well span-7 offset4">
+  <%= form_for([@project, @project_image]) do |f| %>
+    <div class="input-prepend">
+      <%= f.label :canvas %>
+      <%= f.file_field :canvas %>
+    </div>
+
+    <div class="center mt15"><%= f.submit "Create", class: "btn btn-success center" %></div>
+  <% end %>
+</div>
