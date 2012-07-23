@@ -12,7 +12,7 @@
   </tr>
   <%- project.project_images.each do |project_image| -%>
     <tr>
-      <td><%= image_tag project_image.canvas_url %></td>
+      <td><%= cl_image_tag project_image.canvas_url(:thumbnail) %></td>
     </tr>
   <%- end -%>
 <%- end -%>

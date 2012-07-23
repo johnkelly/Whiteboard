@@ -8,6 +8,7 @@ gem 'devise', '~> 2.1.2'
 gem 'stripe', '~> 1.7.0'
 gem 'thin', '~> 1.3.1'
 gem 'carrierwave', '~> 0.6.2'
+gem 'cloudinary', '~> 1.0.31'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

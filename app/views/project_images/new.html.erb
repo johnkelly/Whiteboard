@@ -5,6 +5,7 @@
   <%= form_for([@project, @project_image]) do |f| %>
     <div class="input-prepend">
       <%= f.label :canvas %>
+      <%= f.hidden_field(:canvas_cache) %>
       <%= f.file_field :canvas %>
     </div>
 
