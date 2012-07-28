@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = @subscription.projects.includes(:project_images)
+    @offset = params[:offset].to_i || 0
   end
 
   def new

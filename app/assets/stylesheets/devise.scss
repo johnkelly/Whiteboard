@@ -72,3 +72,19 @@ strong {
     top: -70px;
   }
 }
+.slide_holder {
+  height: 155px;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 965px;
+}
+
+#previous_slide {
+  margin-top: -100px;
+  margin-right: 15px;
+}
+
+#next_slide {
+  margin-top: -100px;
+}

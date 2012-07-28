@@ -8,4 +8,6 @@ class Project < ActiveRecord::Base
 
   attr_accessible :name
 
+  default_scope order: 'created_at asc'
+
 end

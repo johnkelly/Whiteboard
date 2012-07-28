@@ -5,28 +5,40 @@
 <hr/>
 <div>
 <%- @projects.each do |project| -%>
-  <div>
+  <%- images = project.project_images -%>
+  <div class="center">
     <h3>
       <%= project.name %>
       <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning" %>
     </h3>
-    <div class="mt15">
-      <%- project.project_images.each do |project_image| -%>
-        <div class="slide">
+    <%- if images.blank? -%>
+      <div class="mt15 slide_holder">
+        <div class="slide add_slide">
           <div class="slide_contents">
-            <%= link_to root_url do %>
-              <%= cl_image_tag project_image.canvas_url(:thumbnail), width: "200", height: "100" %>
-            <%- end -%>
-            <p><%= project_image.updated_at.strftime('%x') %></p>
+            <%= image_tag "thumbnail_placeholder.gif", width: "200", height: "100" %>
+            <%= link_to "Add WhiteBoard", new_project_project_image_path(project), class: "btn btn-info add_white_board" %>
           </div>
         </div>
-      <%- end -%>
-    <div class="slide add_slide">
-      <div class="slide_contents">
-        <%= image_tag "thumbnail_placeholder.gif", width: "200", height: "100" %>
-        <%= link_to "Add WhiteBoard", new_project_project_image_path(project), class: "btn btn-info add_white_board" %>
       </div>
-    </div>
+    <%- else -%>
+      <%- images_to_offset = images.limit(3).offset(@offset).presence || images.limit(3)  -%>
+      <div class="mt15 slide_holder">
+
+      <%= link_to "Prev <i class='icon-circle-arrow-left'></i>".html_safe, projects_path(offset: @offset - 1), id: "previous_slide", class: "btn btn-info" unless @offset == 0 || (images.size <= 3) %>
+        <%- images_to_offset.each do |project_image| -%>
+          <div class="slide">
+            <div class="slide_contents">
+              <%= link_to root_url do %>
+                <%= cl_image_tag project_image.canvas_url(:thumbnail), width: "200", height: "100" %>
+              <%- end -%>
+              <p><%= project_image.updated_at.strftime('%x') %></p>
+            </div>
+          </div>
+        <%- end -%>
+      <%= link_to "Next <i class='icon-circle-arrow-right'></i>".html_safe, projects_path(offset: @offset + 1), id: "next_slide", class: "btn btn-info" unless @offset == (images.size - 3) || images.size <= 3 %>
+      </div>
+    <%- end -%>
+    <hr/>
   </div>
 <%- end -%>
 </div>

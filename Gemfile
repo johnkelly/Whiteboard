@@ -23,4 +23,5 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'rack-mini-profiler', '~> 0.1.7'
 end
