@@ -1,14 +1,7 @@
 require 'spec_helper'
 
 describe Subscription do
-  before do
-    @customer = User.new(email: "test@example.com", password: "password", password_confirmation: "password")
-    @customer.stripe_customer_token = "C12345"
-    @customer.save!
-
-    @subscription = @customer.build_subscription(plan_id: 1)
-    @subscription.save!
-  end
+  let!(:subscription) { create(:basic_subscription) }
 
   describe "attributes" do
     it { should validate_presence_of(:user_id) }
@@ -24,8 +17,8 @@ describe Subscription do
     pending "test stripe"
 
     it "should be called on save" do
-      @subscription.should_receive(:update_stripe_subscription)
-      @subscription.save!
+      subscription.should_receive(:update_stripe_subscription)
+      subscription.save!
     end
   end
 
@@ -33,28 +26,28 @@ describe Subscription do
     pending "test stripe"
 
     it "should be called on destroy" do
-      @subscription.should_receive(:cancel_stripe_subscription)
-      @subscription.destroy
+      subscription.should_receive(:cancel_stripe_subscription)
+      subscription.destroy
     end
   end
 
   describe "plan_name" do
     it "returns basic for plan 1" do
-      @subscription.plan_name.should == "Basic"
+      subscription.plan_name.should == "Basic"
     end
 
     it "returns professional for plan 2" do
-      @subscription.plan_id = 2
-      @subscription.save!
+      subscription.plan_id = 2
+      subscription.save!
 
-      @subscription.plan_name.should == "Professional"
+      subscription.plan_name.should == "Professional"
     end
 
     it "returns elite for plan 3" do
-      @subscription.plan_id = 3
-      @subscription.save!
+      subscription.plan_id = 3
+      subscription.save!
 
-      @subscription.plan_name.should == "Elite"
+      subscription.plan_name.should == "Elite"
     end
   end
 end

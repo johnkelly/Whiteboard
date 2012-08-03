@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 describe CustomersController do
-  include Devise::TestHelpers
-  
-  before do
-    @user = User.create!(email: "test@example.com", password: "password", password_confirmation: "password")
-    sign_in @user
-  end
+  let(:user) { create(:trial_user) }
+  before { sign_in user }
 
   describe "#new" do
     before { get :new }
@@ -22,10 +18,10 @@ describe CustomersController do
 
     context "Update Billing Info" do
       it "modifies the credit card but doesn't create a new customer" do
-        @user.stripe_customer_token = "C12345"
-        @user.save!
+        user.stripe_customer_token = "C12345"
+        user.save!
         post :create, customer: { stripe_card_token: "12345" }
-        @user.reload.stripe_customer_token.should == "C12345"
+        user.reload.stripe_customer_token.should == "C12345"
       end
     end
   end
