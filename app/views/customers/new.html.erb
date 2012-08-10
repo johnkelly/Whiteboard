@@ -2,7 +2,7 @@
   <h1>Billing Information</h1>
 </div>
 <div class="well span-7 offset-1">
-  <div class="alert alert-info">  
+  <div class="alert alert-info">
     <p>We take payment security seriously.</p>
     <p>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers.</p>
     <p>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.</p>
@@ -40,7 +40,7 @@
   </div>
   <hr/>
    <div class="actions">
-     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off" %>
+     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off", data: { disable_with: "Processing..."} %>
    </div>
    <%- end -%>
  </div>

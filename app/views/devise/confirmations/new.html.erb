@@ -6,7 +6,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
+  <div><%= f.submit "Resend confirmation instructions", data: { disable_with: "Sending..."} %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -20,7 +20,7 @@
       </div>
     <% end -%>
 
-    <div class="mt15"><%= f.submit "Sign in" %></div>
+    <div class="mt15"><%= f.submit "Sign in", data: { disable_with: "Signing In..."} %></div>
   <% end %>
 
   <%= render "devise/shared/links" %>

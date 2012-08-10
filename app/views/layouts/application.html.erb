@@ -29,7 +29,7 @@
         <ul class="nav pull-right">
           <%- if current_user -%>
             <li><%= link_to "My Account <i class='icon-user icon-white'></i>".html_safe, edit_user_registration_path %></li>
-            <li><%= link_to "Sign Out <i class='icon-off icon-white'></i>".html_safe, destroy_user_session_path, method: :delete  %></li>
+            <li><%= link_to "Sign Out <i class='icon-off icon-white'></i>".html_safe, destroy_user_session_path, method: :delete, data: { disable_with: "Signing Out..." } %></li>
           <%- else -%>
             <li><%= link_to "Sign In <i class='icon-off icon-white'></i>".html_safe, new_user_session_path %></li>
           <%- end -%>

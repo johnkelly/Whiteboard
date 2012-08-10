@@ -9,6 +9,6 @@
       <%= f.file_field :canvas %>
     </div>
 
-    <div class="center mt15"><%= f.submit "Create", class: "btn btn-success center" %></div>
+    <div class="center mt15"><%= f.submit "Create", class: "btn btn-success center", data: { disable_with: "Creating..."} %></div>
   <% end %>
 </div>
