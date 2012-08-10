@@ -15,7 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass', '~> 2.0.3.1'
-  gem 'bootswatch-rails', git: 'git://github.com/maxim/bootswatch-rails.git'
+  gem 'bootswatch-rails', '~> 0.0.12'
 end
 
 group :development, :test do
@@ -23,5 +23,5 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'rack-mini-profiler', '~> 0.1.7'
+  gem 'rack-mini-profiler'
 end

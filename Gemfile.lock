@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/maxim/bootswatch-rails.git
-  revision: b6bc761a5e43607f74536e8f6352d23e55e89c06
-  specs:
-    bootswatch-rails (0.0.11)
-      railties (>= 3.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +32,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.0.3.1)
+    bootswatch-rails (0.0.12)
+      railties (>= 3.1)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -182,7 +177,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 2.0.3.1)
-  bootswatch-rails!
+  bootswatch-rails (~> 0.0.12)
   capybara
   carrierwave (~> 0.6.2)
   cloudinary (~> 1.0.31)
@@ -191,7 +186,7 @@ DEPENDENCIES
   factory_girl_rails
   jquery-rails
   pg (~> 0.14.0)
-  rack-mini-profiler (~> 0.1.7)
+  rack-mini-profiler
   rails (= 3.2.6)
   rspec-rails
   sass-rails (~> 3.2.3)
