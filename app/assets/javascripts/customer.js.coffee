@@ -11,17 +11,18 @@ subscription =
         false
       else
         true
-  
+
   processCard: ->
     card =
-      number: $('#card_number').val()
-      cvc: $('#card_code').val()
+      number: $.trim($('#card_number').val())
+      cvc: $.trim($('#card_code').val())
       expMonth: $('#card_month').val()
       expYear: $('#card_year').val()
-      name: $('#full_name').val()
-      address_zip: $('#address_zip').val()
+      name: $.trim($('#full_name').val())
+      address_zip: $.trim($('#address_zip').val())
+
     Stripe.createToken(card, subscription.handleStripeResponse)
-  
+
   handleStripeResponse: (status, response) ->
     if status == 200
       $('#customer_stripe_card_token').val(response.id)
