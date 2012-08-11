@@ -1,0 +1,29 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "WhiteBoard", root_path, class: "brand" %>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <%- if current_user.try(:subscription) -%>
+            <li><%= link_to "My Projects <i class='icon-briefcase icon-white'></i>".html_safe, projects_path %></li>
+          <%- else -%>
+            <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe, plans_path %></li>
+          <%- end -%>
+        </ul>
+        <ul class="nav pull-right">
+          <%- if current_user -%>
+            <li><%= link_to "My Account <i class='icon-user icon-white'></i>".html_safe, edit_user_registration_path %></li>
+            <li><%= link_to "Sign Out <i class='icon-off icon-white'></i>".html_safe, destroy_user_session_path, method: :delete, data: { disable_with: "Signing Out..." } %></li>
+          <%- else -%>
+            <li><%= link_to "Sign In <i class='icon-off icon-white'></i>".html_safe, new_user_session_path %></li>
+          <%- end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

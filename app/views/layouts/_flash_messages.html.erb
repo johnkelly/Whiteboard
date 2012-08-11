@@ -1,0 +1,17 @@
+<%- if flash[:alert].present? -%>
+  <div class="alert alert-warning">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= flash[:alert] %>
+  </div>
+<%- elsif flash[:notice].present? -%>
+  <div class="alert alert-info">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= flash[:notice] %>
+  </div>
+<%- end -%>
+
+<%- if flash[:analytics].present? -%>
+  <script type="text/javascript">
+    _gaq.push(['trackPageview', '<%= flash[:analytics] %>']);
+  </script>
+<%- end -%>
