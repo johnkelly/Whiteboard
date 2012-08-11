@@ -18,6 +18,15 @@ describe SubscriptionsController do
       end
     end
 
+    context "Sets Analytic Code for Creation" do
+      before do
+       sign_in create(:customer)
+       -> { post :create, plan_id: 1 }.should change(Subscription, :count).by(1)
+      end
+
+      it { should set_the_flash[:analytics].to("/vp/add_subscription") }
+    end
+
     context "Change Subscription" do
       before { sign_in subscription.user }
 
@@ -43,6 +52,11 @@ describe SubscriptionsController do
     it "destroys a subscription" do
       -> { delete :destroy, id: subscription.to_param }.should change(Subscription, :count).by(-1)
       response.should redirect_to root_url
+    end
+
+    context "Sets Analytic Code for Deletion" do
+      before { -> { delete :destroy, id: subscription.to_param }.should change(Subscription, :count).by(-1) }
+      it { should set_the_flash[:analytics].to("/vp/cancel_subscription") }
     end
   end
 end

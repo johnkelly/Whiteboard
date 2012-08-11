@@ -4,6 +4,11 @@
   <title>WhiteBoard</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+  <%- if flash[:analytics].present? -%>
+    <script type="text/javascript">
+      _gaq.push(['trackPageview', '<%= flash[:analytics] %>']);
+    </script>
+  <%- end -%>
   <%= csrf_meta_tags %>
   <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
   <meta name="apple-mobile-web-app-capable" content="yes" />
