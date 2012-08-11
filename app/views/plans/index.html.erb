@@ -94,7 +94,7 @@ Upgrade or downgrade your account at any time.  The credit/debt will be reflecte
       </tbody>
       </table>
       <div class="center">
-        <%= link_to "Add Billing Info to Subscribe", new_customer_path, class: "btn btn-success" %>
+        <%= link_to "Add Billing Info to Subscribe", new_customer_path, class: "btn btn-success", data: { "skip-pjax" => true } %>
       </div>
     <%- else -%>
       </tbody>
