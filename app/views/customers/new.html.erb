@@ -40,7 +40,7 @@
   </div>
   <hr/>
    <div class="actions">
-     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off", data: "skip-pjax" %>
+     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off",  data: { "skip-pjax" => true, disable_with: "Processing..."} %>
    </div>
    <%- end -%>
  </div>
