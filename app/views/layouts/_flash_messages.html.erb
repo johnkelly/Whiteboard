@@ -12,6 +12,6 @@
 
 <%- if flash[:analytics].present? -%>
   <script type="text/javascript">
-    _gaq.push(['trackPageview', '<%= flash[:analytics] %>']);
+    _gaq.push(['_trackPageview', '<%= flash[:analytics] %>']);
   </script>
 <%- end -%>
