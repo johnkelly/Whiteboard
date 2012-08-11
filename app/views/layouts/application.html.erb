@@ -55,8 +55,9 @@
       <%= flash[:notice] %>
     </div>
   <%- end -%>
-  <%= yield %>
+  <div data-pjax-container>
+    <%= yield %>
+  </div>
 </div>
-
 </body>
 </html>

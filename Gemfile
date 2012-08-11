@@ -9,6 +9,7 @@ gem 'stripe', '~> 1.7.0'
 gem 'thin', '~> 1.3.1'
 gem 'carrierwave', '~> 0.6.2'
 gem 'cloudinary', '~> 1.0.31'
+gem 'pjax_rails', '~> 0.3.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,5 +24,5 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'rack-mini-profiler'
+  #gem 'rack-mini-profiler'
 end
