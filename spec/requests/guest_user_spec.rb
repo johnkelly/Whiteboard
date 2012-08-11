@@ -20,6 +20,7 @@ describe "Unregistered User" do
       click_button "Sign up"
     end
     page.should have_selector('.alert.alert-info', text: "Welcome! You have signed up successfully.")
+    page.should have_selector('.page-header h1', text: "Billing Information")
     click_link "My Account"
     page.should have_selector('.page-header h1', text: "guest@example.com")
     click_link "Sign Out"

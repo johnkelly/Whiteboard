@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     stripe_customer_token.present?
   end
 
+  def subscriber?
+    subscription.present?
+  end
+
   def create_new_stripe_customer
     unless Rails.env.test?
       customer = Stripe::Customer.create(email: email, card: stripe_card_token)

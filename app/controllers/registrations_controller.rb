@@ -27,4 +27,10 @@ class RegistrationsController < Devise::RegistrationsController
     flash[:analytics] = "/vp/cancel_account"
     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
   end
+
+  protected
+
+  def after_sign_up_path_for(resource)
+    new_customer_url
+  end
 end

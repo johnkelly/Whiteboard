@@ -11,10 +11,7 @@
     WhiteBoard use the latest and greatest technologies to allow you to have a awesome user experience whether you are using your finger, stylus, or mouse to draw.
   </p>
   <p class="center">
-    <a class="btn btn-info">
-      Learn more
-      <i class="icon-question-sign icon-white"></i>
-    </a>
+    <%= link_to "Learn more <i class='icon-question-sign icon-white'></i>".html_safe, plans_path, class: "btn btn-info" %>
     <%= link_to "Sign Up <i class='icon-plus-sign icon-white'></i>".html_safe, new_user_registration_path,
      class: "btn btn-success" %>
   </p>
