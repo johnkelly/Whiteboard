@@ -8,7 +8,7 @@
     <p>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.</p>
   </div>
   <h2>Credit Card Information</h2>
-  <%= form_for :customer, url: customers_url, id: "new_customer", data: "skip-pjax" do |f| %>
+  <%= form_for :customer, url: customers_url, id: "new_customer" do |f| %>
     <%= f.hidden_field :stripe_card_token %>
   <div id="stripe_error" class="alert alert-error hide">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
@@ -40,7 +40,7 @@
   </div>
   <hr/>
    <div class="actions">
-     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off", data: { disable_with: "Processing..."} %>
+     <%= f.submit "Add Credit card", id: "new_customer_submit", autocomplete: "off", data: "skip-pjax" %>
    </div>
    <%- end -%>
  </div>
