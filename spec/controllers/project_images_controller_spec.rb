@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ProjectImagesController do
   let(:project) { create(:project) }
+  let(:project_image) { create(:project_image, project: project) }
   let!(:subscription) { create(:basic_subscription) }
 
   before do
@@ -26,5 +27,12 @@ describe ProjectImagesController do
       flash[:alert].should be_present
       response.should render_template(:new)
     end
+  end
+
+  describe "#show" do
+    before { get :show, id: project_image.to_param, project_id: project.to_param }
+    it { should assign_to(:project_image).with(project_image) }
+    it { should assign_to(:project).with(project) }
+    it { should respond_with(:success) }
   end
 end

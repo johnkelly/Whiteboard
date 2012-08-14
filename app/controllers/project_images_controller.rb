@@ -18,6 +18,10 @@ class ProjectImagesController < ApplicationController
     end
   end
 
+  def show
+    @project_image = @project.project_images.find(params[:id])
+  end
+
   protected
 
   def find_models
