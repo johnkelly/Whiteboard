@@ -5,6 +5,7 @@ jQuery ->
   canvas = $('canvas').get(0)
   canvas.width = 800
   canvas.height = 500
+  enableHandler = false
 
   context = canvas.getContext('2d')
   painting = false
@@ -29,16 +30,26 @@ jQuery ->
     painting = false
 
   canvas.onmousemove = (e) ->
-    if painting
-      mouseX = e.pageX - @offsetLeft
-      mouseY = e.pageY - @offsetTop
+    if enableHandler && painting
+      handleMouseMove(e, @offsetLeft, @offsetTop)
+      enableHandler = false
 
-      x1 = mouseX
-      x2 = lastX
-      y1 = mouseY
-      y2 = lastY
+  handleMouseMove = (e, offsetLeft, offsetTop) ->
+    mouseX = e.pageX - offsetLeft
+    mouseY = e.pageY - offsetTop
 
-      bresenham_line_algorithm(x1, y1, x2, y2, context)
-      channel.trigger("client-mouse-moved", { x1:mouseX, y1: mouseY, x2: lastX, y2: lastY })
-      lastX = mouseX
-      lastY = mouseY
+    x1 = mouseX
+    x2 = lastX
+    y1 = mouseY
+    y2 = lastY
+
+    bresenham_line_algorithm(x1, y1, x2, y2, context)
+    channel.trigger("client-mouse-moved", { x1:mouseX, y1: mouseY, x2: lastX, y2: lastY })
+    lastX = mouseX
+    lastY = mouseY
+
+  timer = window.setInterval(
+    ->
+      enableHandler = true
+    120
+  )
