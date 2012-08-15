@@ -18,6 +18,7 @@ pickle-email-*.html
 /config/s3.yml
 /config/secret_token.yml
 /config/stripe.yml
+/config/pusher.yml
 /config/cloudinary.yml
 routes.txt
 .DS_Store

@@ -7,4 +7,7 @@ Whiteboard::Application.routes.draw do
   resources :projects, only: %w[index new create destroy] do
     resources :project_images, only: %w[new create show]
   end
+  resources :pusher, only: %w[] do
+    collection { post :auth }
+  end
 end

@@ -24,3 +24,4 @@ new_project_project_image GET    /projects/:project_id/project_images/new(.:form
                           POST   /projects(.:format)                                projects#create
               new_project GET    /projects/new(.:format)                            projects#new
                   project DELETE /projects/:id(.:format)                            projects#destroy
+        auth_pusher_index GET    /pusher/auth(.:format)                             pusher#auth

@@ -1,4 +1,7 @@
 jQuery ->
+  pusher = new Pusher('337af4c021caaef28ff9')
+  channel = pusher.subscribe('private-drawing')
+
   canvas = $('canvas').get(0)
   canvas.width = 800
   canvas.height = 500
@@ -8,6 +11,10 @@ jQuery ->
   lastX = 0
   lastY = 0
   lineThickness = 1
+
+  channel.bind('client-mouse-moved', (data) ->
+    bresenham_line_algorithm(data.x1, data.y1, data.x2, data.y2, context)
+  )
 
   context.fillStyle = "#FFFFFF"
   context.fillRect(0,0,canvas.width,canvas.height)
@@ -32,6 +39,6 @@ jQuery ->
       y2 = lastY
 
       bresenham_line_algorithm(x1, y1, x2, y2, context)
-
+      channel.trigger("client-mouse-moved", { x1:mouseX, y1: mouseY, x2: lastX, y2: lastY })
       lastX = mouseX
       lastY = mouseY
