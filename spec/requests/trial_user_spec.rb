@@ -63,7 +63,7 @@ describe "Signed in user" do
 
     it "can add subscription" do
       click_link "Add a Subscription"
-      page.should have_selector('.page-header h1', text: "Subscription Plans")
+      page.should have_selector('.page-header h1', text: "Pricing")
     end
 
     it "can update billing information" do
@@ -80,14 +80,14 @@ describe "Signed in user" do
         click_button "Add Credit card"
       end
       page.should have_selector('.alert.alert-info', text: "Your billing information was updated.")
-      page.should have_selector('.page-header h1', text: "Subscription Plans")
+      page.should have_selector('.page-header h1', text: "Pricing")
     end
   end
 
   describe "Plans" do
     it "can view plans page" do
       click_link "Pricing"
-      page.should have_selector('.page-header h1', text: "Subscription Plans")
+      page.should have_selector('.page-header h1', text: "Pricing")
       click_link "Add Billing Info to Subscribe"
       page.should have_selector('.page-header h1', text: "Billing Information")
     end

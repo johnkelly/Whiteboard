@@ -88,3 +88,41 @@ strong {
 #next_slide {
   margin-top: -100px;
 }
+
+#featured_plan {
+  margin-top: -15px;
+  z-index: 100;
+  position: relative;
+  padding-bottom: 25px;
+  margin-left: -5px;
+  margin-right: -5px;
+  background-color: #E7F4F5;
+}
+
+.plan {
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 20px 20px 0px 20px;
+  color: #AD1D28;
+  background-color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  margin: 0px;
+
+  ul {
+    margin-top: 20px;
+
+    li {
+      padding: 20px 0;
+      border-bottom: 1px dotted;
+    }
+
+    li.no_border {
+      border: none;
+    }
+  }
+}
+.plan_notes {
+  padding-right: 25px;
+  margin-top: 15px;
+}

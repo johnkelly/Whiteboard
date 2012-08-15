@@ -45,11 +45,11 @@ class Subscription < ActiveRecord::Base
   def plan_name
     case plan_id
       when 1
-        "Basic"
+        "Starter"
       when 2
-        "Professional"
+        "Small Business"
       when 3
-        "Elite"
+        "Enterprise"
       else
         "Error"
     end

@@ -33,21 +33,21 @@ describe Subscription do
 
   describe "plan_name" do
     it "returns basic for plan 1" do
-      subscription.plan_name.should == "Basic"
+      subscription.plan_name.should == "Starter"
     end
 
     it "returns professional for plan 2" do
       subscription.plan_id = 2
       subscription.save!
 
-      subscription.plan_name.should == "Professional"
+      subscription.plan_name.should == "Small Business"
     end
 
     it "returns elite for plan 3" do
       subscription.plan_id = 3
       subscription.save!
 
-      subscription.plan_name.should == "Elite"
+      subscription.plan_name.should == "Enterprise"
     end
   end
 end

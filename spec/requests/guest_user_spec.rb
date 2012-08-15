@@ -5,8 +5,8 @@ describe "Unregistered User" do
 
   it "allows guest to view plans" do
     click_link "Pricing"
-    page.should have_selector('.page-header h1', text: "Subscription Plans")
-    click_link "Sign Up Today!"
+    page.should have_selector('.page-header h1', text: "Pricing")
+    click_link "Sign up"
   end
 
   it "allows guest to sign up" do

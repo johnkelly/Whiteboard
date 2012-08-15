@@ -1,105 +1,76 @@
 <div class="page-header">
-  <h1>Subscription Plans</h1>
+  <h1>Pricing</h1>
+</div>
+<div class="row">
+  <div class="span3 plan">
+    <h1>Enterprise</h1>
+    $899 / month
+    <ul class="unstyled">
+      <li>Up to <strong>500</strong> users</li>
+      <li>Up to <strong>100 GB</strong> of cloud storage</li>
+      <li><strong>Unlimited</strong> real time sharing</li>
+      <li>Daily Backups of your data</li>
+      <li class="no_border">Email &amp; Phone Support</li>
+      <li class="no_border"><%= plans_display_link(3) %></li>
+    </ul>
+  </div>
+  <div class="span4 plan" id="featured_plan">
+    <h1>Small Business</h1>
+    $199 / month
+    <ul class="unstyled">
+      <li>Up to <strong>50</strong> users</li>
+      <li>Up to <strong>50 GB</strong> of cloud storage</li>
+      <li><strong>Unlimited</strong> real time sharing</li>
+      <li>Daily Backups of your data</li>
+      <li class="no_border">Email Support</li>
+      <li class="no_border"><%= plans_display_link(2) %></li>
+    </ul>
+  </div>
+  <div class="span3 plan">
+    <h1>Starter</h1>
+    $49 / month
+    <ul class="unstyled">
+      <li>Up to <strong>5</strong> users</li>
+      <li>Up to <strong>10 GB</strong> of cloud storage</li>
+      <li><strong>Unlimited</strong> real time sharing</li>
+      <li>Daily Backups of your data</li>
+      <li class="no_border">Email Support</li>
+      <li class="no_border"><%= plans_display_link(1) %></li>
+    </ul>
+  </div>
 </div>
 
-<p>
-Upgrade or downgrade your account at any time.  The credit/debt will be reflected on your next month's payment. Payments are for the full month.
-</p>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>Feature</td>
-      <td>Trial</td>
-      <td>Lite</td>
-      <td>Standard</td>
-      <td>Elite</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Cloud Storage</td>
-      <td>5 MB</td>
-      <td>3 GB</td>
-      <td>15 GB</td>
-      <td>50 GB</td>
-    </tr>
-    <tr>
-      <td>Access the Whiteboard</td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-    </tr>
-    <tr>
-      <td>Access from any web enabled device</td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-    </tr>
-    <tr>
-      <td>Access to over <strong>16 million</strong> unique colors</td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-    </tr>
-    <tr>
-      <td>Undo/Redo</td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-    </tr>
-    <tr>
-      <td>Auto-save (Whiteboard saves your work for you in case you forget!)</td>
-      <td><i class="icon-remove"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i> Every 5 minutes</td>
-      <td><i class="icon-ok icon-white"></i> Every 1 minute</td>
-    </tr>
-    <tr>
-      <td>Daily Backups (Whiteboard backups up your work on a secure backup server)</td>
-      <td><i class="icon-remove"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-      <td><i class="icon-ok icon-white"></i></td>
-    </tr>
-    <tr>
-      <td>Real time sharing</td>
-      <td><i class="icon-remove"></i></td>
-      <td><i class="icon-remove"></i></td>
-      <td>Coming Soon</td>
-      <td>Coming Soon</td>
-    </tr>
-    <tr>
-      <td>Price</td>
-      <td>Free</td>
-      <td>$19/month</td>
-      <td>$49/month</td>
-      <td>$99/month</td>
-    </tr>
-    <%- if current_user.try(:customer?) -%>
-      <tr>
-        <td>Select</td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 1), method: :post, class: "btn btn-success", data: { disable_with: "Subscribing..."}  %></td>
-        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 2), method: :post, class: "btn btn-success", data: { disable_with: "Subscribing..."} %></td>
-        <td><%= link_to "Subscribe", subscriptions_path(plan_id: 3), method: :post, class: "btn btn-success", data: { disable_with: "Subscribing..."} %></td>
-      </tr>
-      </tbody>
-      </table>
-    <%- elsif current_user -%>
-      </tbody>
-      </table>
-      <div class="center">
-        <%= link_to "Add Billing Info to Subscribe", new_customer_path, class: "btn btn-success", data: { "skip-pjax" => true } %>
-      </div>
-    <%- else -%>
-      </tbody>
-      </table>
-      <div class="center">
-        <%= link_to "Sign Up Today!", new_user_registration_path, class: "btn btn-success" %>
-      </div>
-    <%- end -%>
+<div class="row">
+  <div class="span3 plan_notes">
+    <p>
+      <i class="icon-user icon-white"></i>Change your mind any time within your first 30 days and we will give you a full refund.
+    </p>
+  </div>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-lock icon-white"></i>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers.
+    </p>
+  </div>
+  <div class="span3 plan_notes">
+    <p>
+      <i class="icon-plus icon-white"></i>Not seeing a plan that meets your needs? Contact us for a custom quote.
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="span3 plan_notes">
+    <p>
+      <i class="icon-picture icon-white"></i>All your information is securely stored in the cloud, and accessible with any HTML5 compatible device.
+    </p>
+  </div>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-shopping-cart icon-white"></i>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.
+    </p>
+  </div>
+  <div class="span3 plan_notes">
+    <p>
+      <i class="icon-eye-open icon-white"></i>We take user privacy seriously. We don't display any advertisements.
+    </p>
+  </div>
+</div>
