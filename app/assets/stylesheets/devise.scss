@@ -15,6 +15,10 @@ input[type="submit"]{
 .center {
   text-align: center;
 }
+.plain_link {
+  font-weight: bold;
+}
+
 .float_right {
   float: right;
 }
@@ -89,19 +93,9 @@ strong {
   margin-top: -100px;
 }
 
-#featured_plan {
-  margin-top: -15px;
-  z-index: 100;
-  position: relative;
-  padding-bottom: 25px;
-  margin-left: -5px;
-  margin-right: -5px;
-  background-color: #E7F4F5;
-}
-
 .plan {
-  border: 1px solid #999;
-  border-radius: 5px;
+  border: 5px solid #AD1D28;
+  border-radius: 60px;
   padding: 20px 20px 0px 20px;
   color: #AD1D28;
   background-color: #FFF;
@@ -123,6 +117,6 @@ strong {
   }
 }
 .plan_notes {
-  padding-right: 25px;
   margin-top: 15px;
+  text-align: center;
 }
