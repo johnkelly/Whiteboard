@@ -15,4 +15,5 @@
 //= require jquery.pjax
 //= require bootstrap
 //= require google_analytics
+//= require algorithms
 //= require_tree .
