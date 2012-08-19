@@ -28,7 +28,7 @@
         <%- images_to_offset.each do |project_image| -%>
           <div class="slide">
             <div class="slide_contents">
-              <%= link_to project_project_image_path(project_image, project_id: project) do %>
+              <%= link_to project_project_image_path(project_image, project_id: project), data: { "skip-pjax" => true } do %>
                 <%= cl_image_tag project_image.canvas_url(:thumbnail), width: "200", height: "100" %>
               <%- end -%>
               <p><%= project_image.updated_at.strftime('%x') %></p>
