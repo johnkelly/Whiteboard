@@ -9,7 +9,7 @@
   <div class="center">
     <h3>
       <%= project.name %>
-      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?", disable_with: "Deleting..." }, class: "btn btn-warning" %>
+      <%= link_to "Delete", project_path(project), method: :delete, data: { "skip-pjax" => true, confirm: "Are you sure?", disable_with: "Deleting..." }, class: "btn btn-warning" %>
     </h3>
     <%- if images.blank? -%>
       <div class="mt15 slide_holder">

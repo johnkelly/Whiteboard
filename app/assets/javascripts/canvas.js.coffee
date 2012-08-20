@@ -1,6 +1,6 @@
 jQuery ->
   if $('canvas').length > 0
-    pusher = new Pusher('337af4c021caaef28ff9')
+    pusher = new Pusher($('meta[name="pusher-key"]').attr('content'))
     channel = pusher.subscribe('private-drawing')
 
     canvas = $('canvas').get(0)
@@ -23,14 +23,23 @@ jQuery ->
     context.fillStyle = "#FFFFFF"
     context.fillRect(0,0,canvas.width,canvas.height)
 
+    #Prevent Right Click menu on Canvas
+    $('body').on('contextmenu', 'canvas', (e) ->
+      false
+    )
+
     canvas.onmousedown = (e) ->
       painting = true
       context.fillStyle = "#000000"
       lastX = e.pageX - @offsetLeft
       lastY = e.pageY - @offsetTop
 
-    canvas.onmouseup = (e) ->
+    document.onmouseup = (e) ->
       painting = false
+
+    canvas.onmouseout = (e) ->
+      if painting
+        painting = false
 
     canvas.onmousemove = (e) ->
       if painting
@@ -50,9 +59,10 @@ jQuery ->
       lastX = mouseX
       lastY = mouseY
 
-    timer = window.setInterval(
+    window.setInterval(
       ->
-        channel.trigger("client-mouse-moved", { pointsToDraw: pointsToDraw })
-        pointsToDraw = [] if pusher.connection.state is "connected"
-      500
+        if pointsToDraw.length
+          channel.trigger("client-mouse-moved", { pointsToDraw: pointsToDraw })
+          pointsToDraw = [] if pusher.connection.state is "connected"
+      250
     )
