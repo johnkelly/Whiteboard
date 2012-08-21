@@ -1,4 +1,4 @@
-window.bresenham_line_algorithm = (x1, y1, x2, y2, context) ->
+window.bresenham_line_algorithm = (x1, y1, x2, y2, color, context) ->
   steep = Math.abs(y2-y1) > Math.abs(x2-x1)
 
   if steep
@@ -38,7 +38,7 @@ window.bresenham_line_algorithm = (x1, y1, x2, y2, context) ->
     if steep
       context.fillRect(y, x, lineThickness , lineThickness)
     else
-      context.fillStyle = "#000000"
+      context.fillStyle = color
       context.fillRect(x, y, lineThickness , lineThickness)
 
     error += de

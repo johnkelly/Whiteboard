@@ -14,14 +14,18 @@ jQuery ->
     lastY = 0
     lineThickness = 1
     pointsToDraw = []
+    active_tool = false
 
     channel.bind('client-mouse-moved', (data) ->
       for point in data.pointsToDraw
-        bresenham_line_algorithm(point[0], point[1], point[2], point[3], context)
+        bresenham_line_algorithm(point[0], point[1], point[2], point[3], point[4], context)
     )
-
-    context.fillStyle = "#FFFFFF"
+    color = "#FFFFFF"
+    context.fillStyle = color
     context.fillRect(0,0,canvas.width,canvas.height)
+
+    color = "#000000"
+    context.fillStyle = color
 
     #Prevent Right Click menu on Canvas
     $('body').on('contextmenu', 'canvas', (e) ->
@@ -29,13 +33,15 @@ jQuery ->
     )
 
     canvas.onmousedown = (e) ->
-      painting = true
-      context.fillStyle = "#000000"
-      lastX = e.pageX - @offsetLeft
-      lastY = e.pageY - @offsetTop
+      if active_tool
+        painting = true
+        context.fillStyle = color
+        lastX = e.pageX - @offsetLeft
+        lastY = e.pageY - @offsetTop
 
     document.onmouseup = (e) ->
-      painting = false
+      if painting
+        painting = false
 
     canvas.onmouseout = (e) ->
       if painting
@@ -51,11 +57,11 @@ jQuery ->
         y1 = mouseY
         y2 = lastY
 
-        pointsToDraw.push([x1, y1, x2, y2])
-        handleMouseMove(mouseX, mouseY, x1, y1, x2, y2)
+        pointsToDraw.push([x1, y1, x2, y2, color])
+        handleMouseMove(mouseX, mouseY, x1, y1, x2, y2, color)
 
-    handleMouseMove = (mouseX, mouseY, x1, y1, x2, y2) ->
-      bresenham_line_algorithm(x1, y1, x2, y2, context)
+    handleMouseMove = (mouseX, mouseY, x1, y1, x2, y2, color) ->
+      bresenham_line_algorithm(x1, y1, x2, y2, color, context)
       lastX = mouseX
       lastY = mouseY
 
@@ -66,3 +72,15 @@ jQuery ->
           pointsToDraw = [] if pusher.connection.state is "connected"
       250
     )
+
+    $('[data-behavior~=pen_tool]').live 'click', ->
+      active_tool = "pen_tool"
+
+    $('[data-behavior~=erase_tool]').live 'click', ->
+      active_tool = "erase_tool"
+      color = "#FFFFFF"
+
+    $('[data-behavior~=color_picker]').live 'change', ->
+      if active_tool is "erase_tool"
+        active_tool = false
+      color = $(@).val()

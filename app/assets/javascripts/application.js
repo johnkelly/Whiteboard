@@ -15,5 +15,6 @@
 //= require jquery.pjax
 //= require bootstrap
 //= require google_analytics
+//= require spectrum
 //= require algorithms
 //= require_tree .
