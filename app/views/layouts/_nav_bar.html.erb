@@ -5,6 +5,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
       <%= link_to "WhiteBoard", root_path, class: "brand" %>
       <div class="nav-collapse">
@@ -16,6 +17,7 @@
           <%- end -%>
         </ul>
         <ul class="nav pull-right">
+          <li><a href="javascript:UserVoice.showPopupWidget();" title="Support">Support <i class='icon-wrench icon-white'></i></a></li>
           <%- if current_user -%>
             <li><%= link_to "My Account <i class='icon-user icon-white'></i>".html_safe, edit_user_registration_path %></li>
             <li><%= link_to "Sign Out <i class='icon-off icon-white'></i>".html_safe, destroy_user_session_path, method: :delete, data: { "skip-pjax" => true, disable_with: "Signing Out..." } %></li>

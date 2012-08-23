@@ -2,3 +2,19 @@ canvas {
   background-color: #EFF;
   cursor: pointer;
 }
+
+.color_picker {
+  border: none;
+  vertical-align: bottom;
+  -webkit-appearance: square-button;
+  width: 44px;
+  height: 23px;
+}
+
+.canvas_navbar {
+  margin-bottom: 5px;
+
+  a, input, div {
+    margin-right: 5px;
+  }
+}
