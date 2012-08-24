@@ -5,7 +5,7 @@
     <a class="btn" data-behavior="pen_tool">Pen</a>
     <a class="btn" data-behavior="erase_tool">Erase</a>
     <input type="color" data-behavior="color_picker" class="color_picker" />
-    <a class="btn" data-behavior="save_tool" data-url=<%= project_project_images_path(@project) %>>Save</a>
+    <%= link_to "Save", "", class: "btn", remote: true, data: { behavior: "save_tool", url: project_project_images_path(@project) } %>
 </div>
 <div class="center">
   <canvas>
