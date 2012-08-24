@@ -17,7 +17,10 @@ class ProjectImagesController < ApplicationController
 
     @project_image.canvas = file
     @project_image.save!
-    head :ok
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show

@@ -86,6 +86,7 @@ jQuery ->
       color = $(@).val()
 
     $('[data-behavior~=save_tool]').live 'click', ->
+      $('#canvas_save').css('visibility', 'visible')
       image_data = canvas.toDataURL("image/png")
       url = $(@).data('url')
       $.post(url, { image_data: image_data })
