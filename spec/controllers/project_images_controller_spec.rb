@@ -18,7 +18,7 @@ describe ProjectImagesController do
 
   describe "#create" do
     it "creates a new project_image" do
-      -> { post :create, project_id: project.to_param, image_data: @image_data }.should change(ProjectImage, :count).by(1)
+      -> { post :create, project_id: project.to_param, image_data: @image_data, format: :js }.should change(ProjectImage, :count).by(1)
       response.should be_success
     end
   end
