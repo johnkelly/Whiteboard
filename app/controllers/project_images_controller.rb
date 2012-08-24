@@ -7,15 +7,17 @@ class ProjectImagesController < ApplicationController
   end
 
   def create
-    @project_image = @project.project_images.new(params[:project_image])
+    @project_image = @project.project_images.new
+    image_data = params[:image_data]
+    image_data.gsub!("data:image/png;base64,", "")
 
-    if @project_image.save
-      flash[:notice] = "Successfully added new project image."
-      redirect_to projects_url
-    else
-      flash[:alert] = @project_image.errors.full_messages
-      render :new
-    end
+    temp_file_name = "image_project_#{@project.id}_#{Time.now.to_i}.png"
+    file = File.new(Rails.root.join("tmp", temp_file_name), 'wb')
+    file.write(Base64.decode64(image_data))
+
+    @project_image.canvas = file
+    @project_image.save!
+    head :ok
   end
 
   def show

@@ -4,8 +4,8 @@ jQuery ->
     channel = pusher.subscribe('private-drawing')
 
     canvas = $('canvas').get(0)
-    canvas.width = 800
-    canvas.height = 500
+    canvas.width = 980
+    canvas.height = 650
     enableHandler = false
 
     context = canvas.getContext('2d')
@@ -84,3 +84,10 @@ jQuery ->
       if active_tool is "erase_tool"
         active_tool = false
       color = $(@).val()
+
+    $('[data-behavior~=save_tool]').live 'click', ->
+      image_data = canvas.toDataURL("image/png")
+      url = $(@).data('url')
+      $.post(url, { image_data: image_data })
+
+
