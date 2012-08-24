@@ -11,7 +11,10 @@ gem 'carrierwave', '~> 0.6.2'
 gem 'cloudinary', '~> 1.0.31'
 gem 'pjax_rails', '~> 0.3.2'
 gem 'newrelic_rpm', '~> 3.4.1'
-gem "pusher", "~> 0.9.4"
+gem 'pusher', '~> 0.9.4'
+gem 'cache_digests', '~> 0.1.0'
+gem 'memcachier', '~> 0.0.1'
+gem 'dalli', '~> 2.1.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

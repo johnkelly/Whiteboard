@@ -1,73 +1,75 @@
-<div class="hero-unit">
-  <h1 class="center">Draw from anywhere</h1>
-  <ul class="thumbnails margin_center">
-  <li>
-    <div class="thumbnail">
-      <%= image_tag "placeholder.gif", alt: "placeholder", class: "mt15" %>
-    </div>
-  </li>
-  </ul>
-  <p class="center lead">
-    WhiteBoard use the latest and greatest technologies to allow you to have a awesome user experience whether you are using your finger, stylus, or mouse to draw.
-  </p>
-  <p class="center">
-    <%= link_to "Learn more <i class='icon-question-sign icon-white'></i>".html_safe, plans_path, class: "btn btn-info" %>
-    <%= link_to "Sign Up <i class='icon-plus-sign icon-white'></i>".html_safe, new_user_registration_path,
-     class: "btn btn-success" %>
-  </p>
-</div>
-<div class="page-header">
-  <h1>View on any device</h1>
-  <p class="lead">WhiteBoard stores and backups all of your drawings in the cloud.  Draw something on your phone and be able to seamlessly view or continue working on it at your computer.  Have the peace of mind that if you lose a device or it fails your drawings are safely secured in the cloud.</p>
-</div>
-<div class="page-header">
-  <h1>Collaborate Remotely</h1>
-  <p class="lead">WhiteBoard allows realtime collaboration.  Work with someone in another city or even country and be able to see any changes to a drawing instantly.</p>
-</div>
-<div class="page-header">
-  <h1>Free to Try</h1>
-  <p class="lead">Sign up for a trial version of whiteboard with just your email address and password. <strong>No credit card or personal information is required to try Whiteboard.</strong> When you're ready to purchase the full version, simply choose a monthly plan, and add your credit card. You can cancel your plan or change plans at any time on your account page.</p>
-</div>
-<div class="page-header">
-  <h1>What our users are saying</h1>
-  <div class="row">
-    <div class="span4">
-      <blockquote>
-        <p>Whiteboard has dramatically improved my company's design workflow.</p>
-        <small>John P. <i class='icon-user icon-white'></i></small>
-      </blockquote>
-    </div>
-    <div class="span4">
-      <blockquote>
-        <p>It's great to use a product that just works.</p>
-        <small>Kevin S. <i class='icon-user icon-white'></i></small>
-      </blockquote>
-    </div>
-    <div class="span4">
-      <blockquote>
-        <p>Whiteboard is great for doddling ideas down.</p>
-        <small>Laura B. <i class='icon-user icon-white'></i></small>
-      </blockquote>
-    </div>
+<% cache ["v1"] do %>
+  <div class="hero-unit">
+    <h1 class="center">Draw from anywhere</h1>
+    <ul class="thumbnails margin_center">
+    <li>
+      <div class="thumbnail">
+        <%= image_tag "placeholder.gif", alt: "placeholder", class: "mt15" %>
+      </div>
+    </li>
+    </ul>
+    <p class="center lead">
+      WhiteBoard use the latest and greatest technologies to allow you to have a awesome user experience whether you are using your finger, stylus, or mouse to draw.
+    </p>
+    <p class="center">
+      <%= link_to "Learn more <i class='icon-question-sign icon-white'></i>".html_safe, plans_path, class: "btn btn-info" %>
+      <%= link_to "Sign Up <i class='icon-plus-sign icon-white'></i>".html_safe, new_user_registration_path,
+       class: "btn btn-success" %>
+    </p>
   </div>
+  <div class="page-header">
+    <h1>View on any device</h1>
+    <p class="lead">WhiteBoard stores and backups all of your drawings in the cloud.  Draw something on your phone and be able to seamlessly view or continue working on it at your computer.  Have the peace of mind that if you lose a device or it fails your drawings are safely secured in the cloud.</p>
+  </div>
+  <div class="page-header">
+    <h1>Collaborate Remotely</h1>
+    <p class="lead">WhiteBoard allows realtime collaboration.  Work with someone in another city or even country and be able to see any changes to a drawing instantly.</p>
+  </div>
+  <div class="page-header">
+    <h1>Free to Try</h1>
+    <p class="lead">Sign up for a trial version of whiteboard with just your email address and password. <strong>No credit card or personal information is required to try Whiteboard.</strong> When you're ready to purchase the full version, simply choose a monthly plan, and add your credit card. You can cancel your plan or change plans at any time on your account page.</p>
+  </div>
+  <div class="page-header">
+    <h1>What our users are saying</h1>
     <div class="row">
       <div class="span4">
         <blockquote>
-          <p>Thank you Whiteboard!</p>
-          <small>Sheila D. <i class='icon-user icon-white'></i></small>
+          <p>Whiteboard has dramatically improved my company's design workflow.</p>
+          <small>John P. <i class='icon-user icon-white'></i></small>
         </blockquote>
       </div>
       <div class="span4">
         <blockquote>
-          <p>As a remote designer, presenting my work to my manager and being able to instantly change my design as she views it has been a huge productivity boost.</p>
-          <small>Eileen K. <i class='icon-user icon-white'></i></small>
+          <p>It's great to use a product that just works.</p>
+          <small>Kevin S. <i class='icon-user icon-white'></i></small>
         </blockquote>
       </div>
       <div class="span4">
         <blockquote>
-          <p>I love having the option to draw with my iPad on the go.</p>
-          <small>Pat G. <i class='icon-user icon-white'></i></small>
+          <p>Whiteboard is great for doddling ideas down.</p>
+          <small>Laura B. <i class='icon-user icon-white'></i></small>
         </blockquote>
       </div>
+    </div>
+      <div class="row">
+        <div class="span4">
+          <blockquote>
+            <p>Thank you Whiteboard!</p>
+            <small>Sheila D. <i class='icon-user icon-white'></i></small>
+          </blockquote>
+        </div>
+        <div class="span4">
+          <blockquote>
+            <p>As a remote designer, presenting my work to my manager and being able to instantly change my design as she views it has been a huge productivity boost.</p>
+            <small>Eileen K. <i class='icon-user icon-white'></i></small>
+          </blockquote>
+        </div>
+        <div class="span4">
+          <blockquote>
+            <p>I love having the option to draw with my iPad on the go.</p>
+            <small>Pat G. <i class='icon-user icon-white'></i></small>
+          </blockquote>
+        </div>
+    </div>
   </div>
-</div>
+<% end %>
