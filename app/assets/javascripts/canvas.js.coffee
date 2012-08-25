@@ -44,7 +44,7 @@ jQuery ->
     draw_saved_image_onto_canvas(context)
     color = set_canvas_color("#000000", context)
 
-    prevent_right_click_on_canvas
+    prevent_right_click_on_canvas()
 
     canvas.onmousedown = (e) ->
       if active_tool
