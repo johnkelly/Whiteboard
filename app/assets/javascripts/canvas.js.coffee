@@ -43,6 +43,7 @@ jQuery ->
     clear_canvas(canvas, context)
     draw_saved_image_onto_canvas(context)
     color = set_canvas_color("#000000", context)
+    last_color = color
 
     prevent_right_click_on_canvas()
 
@@ -89,15 +90,24 @@ jQuery ->
 
     $('[data-behavior~=pen_tool]').live 'click', ->
       active_tool = "pen_tool"
+      $('a').removeClass('selected')
+      $(@).addClass('selected')
+
+      color = last_color
 
     $('[data-behavior~=erase_tool]').live 'click', ->
       active_tool = "erase_tool"
+      $('a').removeClass('selected')
+      $(@).addClass('selected')
+
+      last_color = color
       color = "#FFFFFF"
 
     $('[data-behavior~=color_picker]').live 'change', ->
       if active_tool is "erase_tool"
         active_tool = false
       color = $(@).val()
+      last_color = color
 
     $('[data-behavior~=save_tool]').live 'click', ->
       $('#canvas_save').css('visibility', 'visible')

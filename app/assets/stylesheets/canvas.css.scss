@@ -21,4 +21,10 @@ canvas {
 #canvas_save {
   visibility: hidden;
   text-align: center;
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #AD1D28;
+  color: #fff;
 }
