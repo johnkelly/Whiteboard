@@ -1,80 +1,78 @@
-<% cache ["plans#index-v1"] do %>
-  <div class="page-header">
-    <h1>Pricing</h1>
-  </div>
-  <div class="row-fluid">
-    <div class="plans">
-      <div class="span4 plan">
-        <h1>Starter</h1>
-        $20 / month
-        <ul class="unstyled">
-          <li>Up to <strong>5</strong> users</li>
-          <li>Up to <strong>500</strong> White Boards</li>
-          <li><strong>Real time</strong> collaborative drawing</li>
-          <li>Daily Backups of your data</li>
-          <li class="no_border">Email Support</li>
-          <li class="no_border"><%= plans_display_link(1) %></li>
-        </ul>
-      </div>
-      <div class="span4 plan" id="featured_plan">
-        <h1>Small Business</h1>
-        $100 / month
-        <ul class="unstyled">
-          <li>Up to <strong>25</strong> users</li>
-          <li>Up to <strong>5,000</strong> White Boards</li>
-          <li><strong>Real time</strong> collaborative drawing</li>
-          <li>Daily Backups of your data</li>
-          <li class="no_border">Email Support</li>
-          <li class="no_border"><%= plans_display_link(2) %></li>
-        </ul>
-      </div>
-      <div class="span4 plan">
-        <h1>Enterprise</h1>
-        $200 / month
-        <ul class="unstyled">
-          <li>Up to <strong>150</strong> users</li>
-          <li>Up to <strong>50,000</strong> White Boards</li>
-          <li><strong>Real time</strong> collaborative drawing</li>
-          <li>Daily Backups of your data</li>
-          <li class="no_border">Email &amp; Phone Support</li>
-          <li class="no_border"><%= plans_display_link(3) %></li>
-        </ul>
-      </div>
+<div class="page-header">
+  <h1>Pricing</h1>
+</div>
+<div class="row-fluid">
+  <div class="plans">
+    <div class="span4 plan">
+      <h1>Starter</h1>
+      $20 / month
+      <ul class="unstyled">
+        <li>Up to <strong>5</strong> users</li>
+        <li>Up to <strong>500</strong> White Boards</li>
+        <li><strong>Real time</strong> collaborative drawing</li>
+        <li>Daily Backups of your data</li>
+        <li class="no_border">Email Support</li>
+        <li class="no_border"><%= plans_display_link(1) %></li>
+      </ul>
+    </div>
+    <div class="span4 plan" id="featured_plan">
+      <h1>Small Business</h1>
+      $100 / month
+      <ul class="unstyled">
+        <li>Up to <strong>25</strong> users</li>
+        <li>Up to <strong>5,000</strong> White Boards</li>
+        <li><strong>Real time</strong> collaborative drawing</li>
+        <li>Daily Backups of your data</li>
+        <li class="no_border">Email Support</li>
+        <li class="no_border"><%= plans_display_link(2) %></li>
+      </ul>
+    </div>
+    <div class="span4 plan">
+      <h1>Enterprise</h1>
+      $200 / month
+      <ul class="unstyled">
+        <li>Up to <strong>150</strong> users</li>
+        <li>Up to <strong>50,000</strong> White Boards</li>
+        <li><strong>Real time</strong> collaborative drawing</li>
+        <li>Daily Backups of your data</li>
+        <li class="no_border">Email &amp; Phone Support</li>
+        <li class="no_border"><%= plans_display_link(3) %></li>
+      </ul>
     </div>
   </div>
+</div>
 
-  <div class="row-fluid">
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-user icon-white"></i>Change your mind any time within your first 30 days and we will give you a full refund.
-      </p>
-    </div>
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-lock icon-white"></i>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers.
-      </p>
-    </div>
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-plus icon-white"></i>Not seeing a plan that meets your needs? Contact us for a custom quote.
-      </p>
-    </div>
+<div class="row-fluid">
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-user icon-white"></i>Change your mind any time within your first 30 days and we will give you a full refund.
+    </p>
   </div>
-  <div class="row-fluid">
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-picture icon-white"></i>All your information is securely stored in the cloud, and accessible with any HTML5 compatible device.
-      </p>
-    </div>
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-shopping-cart icon-white"></i>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.
-      </p>
-    </div>
-    <div class="span4 plan_notes">
-      <p>
-        <i class="icon-eye-open icon-white"></i>We take user privacy seriously. We don't display any advertisements.
-      </p>
-    </div>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-lock icon-white"></i>Your credit card information is directly processed by our payment provider with bank level encryption and never touches our servers.
+    </p>
   </div>
-<% end %>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-plus icon-white"></i>Not seeing a plan that meets your needs? Contact us for a custom quote.
+    </p>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-picture icon-white"></i>All your information is securely stored in the cloud, and accessible with any HTML5 compatible device.
+    </p>
+  </div>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-shopping-cart icon-white"></i>We accept Visa, American Express, MasterCard, Discover, JCB, or Diners Club.
+    </p>
+  </div>
+  <div class="span4 plan_notes">
+    <p>
+      <i class="icon-eye-open icon-white"></i>We take user privacy seriously. We don't display any advertisements.
+    </p>
+  </div>
+</div>
