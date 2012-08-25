@@ -1,3 +1,17 @@
+clear_canvas = (canvas, context) ->
+  set_canvas_color("#FFFFFF", context)
+  context.fillRect(0,0,canvas.width,canvas.height)
+
+draw_saved_image_onto_canvas = (context) ->
+  saved_image = new Image()
+  saved_image.crossOrigin = "anonymous"
+  saved_image.onload = ->
+    context.drawImage(@, 0, 0)
+  saved_image.src = $('canvas').data('url')
+
+set_canvas_color = (color, context) ->
+  context.fillStyle = color
+
 jQuery ->
   if $('canvas').length > 0
     pusher = new Pusher($('meta[name="pusher-key"]').attr('content'))
@@ -20,12 +34,10 @@ jQuery ->
       for point in data.pointsToDraw
         bresenham_line_algorithm(point[0], point[1], point[2], point[3], point[4], context)
     )
-    color = "#FFFFFF"
-    context.fillStyle = color
-    context.fillRect(0,0,canvas.width,canvas.height)
-
+    clear_canvas(canvas, context)
+    draw_saved_image_onto_canvas(context)
     color = "#000000"
-    context.fillStyle = color
+    set_canvas_color(color, context)
 
     #Prevent Right Click menu on Canvas
     $('body').on('contextmenu', 'canvas', (e) ->
@@ -35,7 +47,7 @@ jQuery ->
     canvas.onmousedown = (e) ->
       if active_tool
         painting = true
-        context.fillStyle = color
+        set_canvas_color(color, context)
         lastX = e.pageX - @offsetLeft
         lastY = e.pageY - @offsetTop
 
