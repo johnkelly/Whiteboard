@@ -11,6 +11,12 @@ draw_saved_image_onto_canvas = (context) ->
 
 set_canvas_color = (color, context) ->
   context.fillStyle = color
+  color
+
+prevent_right_click_on_canvas = ->
+  $('body').on('contextmenu', 'canvas', (e) ->
+    false
+  )
 
 jQuery ->
   if $('canvas').length > 0
@@ -36,13 +42,9 @@ jQuery ->
     )
     clear_canvas(canvas, context)
     draw_saved_image_onto_canvas(context)
-    color = "#000000"
-    set_canvas_color(color, context)
+    color = set_canvas_color("#000000", context)
 
-    #Prevent Right Click menu on Canvas
-    $('body').on('contextmenu', 'canvas', (e) ->
-      false
-    )
+    prevent_right_click_on_canvas
 
     canvas.onmousedown = (e) ->
       if active_tool
