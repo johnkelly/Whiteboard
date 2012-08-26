@@ -88,14 +88,14 @@ jQuery ->
       250
     )
 
-    $('[data-behavior~=pen_tool]').live 'click', ->
+    $('[data-behavior~=pen_tool]').on 'click', ->
       active_tool = "pen_tool"
       $('a').removeClass('selected')
       $(@).addClass('selected')
 
       color = last_color
 
-    $('[data-behavior~=erase_tool]').live 'click', ->
+    $('[data-behavior~=erase_tool]').on 'click', ->
       active_tool = "erase_tool"
       $('a').removeClass('selected')
       $(@).addClass('selected')
@@ -103,13 +103,13 @@ jQuery ->
       last_color = color
       color = "#FFFFFF"
 
-    $('[data-behavior~=color_picker]').live 'change', ->
+    $('[data-behavior~=color_picker]').on 'change', ->
       if active_tool is "erase_tool"
         active_tool = false
       color = $(@).val()
       last_color = color
 
-    $('[data-behavior~=save_tool]').live 'click', ->
+    $('[data-behavior~=save_tool]').on 'click', ->
       $('#canvas_save').css('visibility', 'visible')
       image_data = canvas.toDataURL("image/png")
       url = $(@).data('url')
