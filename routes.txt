@@ -1,27 +1,24 @@
-                     root        /                                                  homes#index
-         new_user_session GET    /users/sign_in(.:format)                           devise/sessions#new
-             user_session POST   /users/sign_in(.:format)                           devise/sessions#create
-     destroy_user_session DELETE /users/sign_out(.:format)                          devise/sessions#destroy
-            user_password POST   /users/password(.:format)                          devise/passwords#create
-        new_user_password GET    /users/password/new(.:format)                      devise/passwords#new
-       edit_user_password GET    /users/password/edit(.:format)                     devise/passwords#edit
-                          PUT    /users/password(.:format)                          devise/passwords#update
- cancel_user_registration GET    /users/cancel(.:format)                            registrations#cancel
-        user_registration POST   /users(.:format)                                   registrations#create
-    new_user_registration GET    /users/sign_up(.:format)                           registrations#new
-   edit_user_registration GET    /users/edit(.:format)                              registrations#edit
-                          PUT    /users(.:format)                                   registrations#update
-                          DELETE /users(.:format)                                   registrations#destroy
-                customers POST   /customers(.:format)                               customers#create
-             new_customer GET    /customers/new(.:format)                           customers#new
-                    plans GET    /plans(.:format)                                   plans#index
-            subscriptions POST   /subscriptions(.:format)                           subscriptions#create
-             subscription DELETE /subscriptions/:id(.:format)                       subscriptions#destroy
-   project_project_images POST   /projects/:project_id/project_images(.:format)     project_images#create
-new_project_project_image GET    /projects/:project_id/project_images/new(.:format) project_images#new
-    project_project_image GET    /projects/:project_id/project_images/:id(.:format) project_images#show
-                 projects GET    /projects(.:format)                                projects#index
-                          POST   /projects(.:format)                                projects#create
-              new_project GET    /projects/new(.:format)                            projects#new
-                  project DELETE /projects/:id(.:format)                            projects#destroy
-        auth_pusher_index GET    /pusher/auth(.:format)                             pusher#auth
+                    root        /                              homes#index
+        new_user_session GET    /users/sign_in(.:format)       devise/sessions#new
+            user_session POST   /users/sign_in(.:format)       devise/sessions#create
+    destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy
+           user_password POST   /users/password(.:format)      devise/passwords#create
+       new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+      edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+                         PUT    /users/password(.:format)      devise/passwords#update
+cancel_user_registration GET    /users/cancel(.:format)        registrations#cancel
+       user_registration POST   /users(.:format)               registrations#create
+   new_user_registration GET    /users/sign_up(.:format)       registrations#new
+  edit_user_registration GET    /users/edit(.:format)          registrations#edit
+                         PUT    /users(.:format)               registrations#update
+                         DELETE /users(.:format)               registrations#destroy
+               customers POST   /customers(.:format)           customers#create
+            new_customer GET    /customers/new(.:format)       customers#new
+                   plans GET    /plans(.:format)               plans#index
+           subscriptions POST   /subscriptions(.:format)       subscriptions#create
+            subscription DELETE /subscriptions/:id(.:format)   subscriptions#destroy
+             whiteboards GET    /whiteboards(.:format)         whiteboards#index
+                         POST   /whiteboards(.:format)         whiteboards#create
+              whiteboard GET    /whiteboards/:id(.:format)     whiteboards#show
+                         PUT    /whiteboards/:id(.:format)     whiteboards#update
+       auth_pusher_index POST   /pusher/auth(.:format)         pusher#auth

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     url = root_url
 
     if current_user.subscriber?
-      url = projects_url
+      url = whiteboards_url
     elsif current_user.customer?
       url = plans_url
     elsif current_user
