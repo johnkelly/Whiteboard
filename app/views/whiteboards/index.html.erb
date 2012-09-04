@@ -1,0 +1,13 @@
+<div class="page-header center">
+  <h1 class="inline mr15">Whiteboards</h1>
+</div>
+<div class="mb20 center">
+  <%= link_to "New Whiteboard", whiteboards_path, method: :post, data: { "skip-pjax" => true }, class: "btn btn-info inline" %>
+</div>
+<div class="center">
+  <%- @whiteboards.each do |whiteboard| -%>
+    <%= link_to whiteboard_path(whiteboard), class: "whiteboard_thumbnail", data: { "skip-pjax" => true } do %>
+      <%= cl_image_tag whiteboard.canvas_url(:thumbnail), width: "200", height: "100" %>
+    <%- end -%>
+  <%- end -%>
+</div>

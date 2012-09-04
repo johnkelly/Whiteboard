@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723013357) do
+ActiveRecord::Schema.define(:version => 20120903221034) do
+
+  create_table "drawings", :force => true do |t|
+    t.integer  "subscription_id"
+    t.string   "canvas"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "drawings", ["subscription_id"], :name => "index_drawings_on_subscription_id"
 
   create_table "project_images", :force => true do |t|
     t.integer  "project_id"

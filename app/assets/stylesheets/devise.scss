@@ -59,9 +59,15 @@ strong {
 .mr15 {
   margin-right: 15px;
 }
+
 .ml15 {
   margin-left: 15px;
 }
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
 .inline {
   display: inline;
 }
@@ -78,6 +84,14 @@ strong {
   margin-bottom: 10px;
   padding-right: 10px;
 }
+
+.whiteboard_thumbnail {
+  width: 200px;
+  height: 100px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
 .slide {
   background-color: #AD1D28;
   text-align: center;
