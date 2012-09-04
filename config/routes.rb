@@ -4,9 +4,6 @@ Whiteboard::Application.routes.draw do
   resources :customers, only: %w[new create]
   resources :plans, only: %w[index]
   resources :subscriptions, only: %w[create destroy]
-  resources :projects, only: %w[index new create destroy] do
-    resources :project_images, only: %w[new create show]
-  end
   resources :whiteboards, only: %w[index create update show]
   resources :pusher, only: %w[] do
     collection { post :auth }

@@ -9,7 +9,6 @@ describe Subscription do
     it { should validate_uniqueness_of(:user_id) }
 
     it { should belong_to(:user) }
-    it { should have_many(:projects).dependent(:destroy) }
     it { should have_many(:drawings).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:user_id) }
   end

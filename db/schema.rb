@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903221034) do
+ActiveRecord::Schema.define(:version => 20120904052124) do
 
   create_table "drawings", :force => true do |t|
     t.integer  "subscription_id"
@@ -21,24 +21,6 @@ ActiveRecord::Schema.define(:version => 20120903221034) do
   end
 
   add_index "drawings", ["subscription_id"], :name => "index_drawings_on_subscription_id"
-
-  create_table "project_images", :force => true do |t|
-    t.integer  "project_id"
-    t.string   "canvas"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "project_images", ["project_id"], :name => "index_project_images_on_project_id"
-
-  create_table "projects", :force => true do |t|
-    t.integer  "subscription_id"
-    t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "projects", ["subscription_id"], :name => "index_projects_on_subscription_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"

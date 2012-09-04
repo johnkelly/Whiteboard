@@ -1,6 +1,5 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
-  has_many :projects, dependent: :destroy
   has_many :drawings, dependent: :destroy
 
   validates_presence_of :user_id
