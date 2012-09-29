@@ -4,7 +4,9 @@
   </h1>
 </div>
 <div class="center" id="whiteboards">
-  <%= render partial: "whiteboards/whiteboard", collection: @whiteboards %>
+  <% cache @whiteboards do %>
+    <%= render partial: "whiteboards/whiteboard", collection: @whiteboards %>
+  <% end %>
 </div>
 <div class="center">
   <%= will_paginate @whiteboards %>
