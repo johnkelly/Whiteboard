@@ -1,13 +1,11 @@
 <div class="page-header center">
-  <h1 class="inline mr15">Whiteboards</h1>
-</div>
-<div class="mb20 center">
+  <h1 class="inline mr15">Whiteboards
   <%= link_to "New Whiteboard", whiteboards_path, method: :post, data: { "no-turbolink" => true }, class: "btn btn-info inline" %>
+  </h1>
+</div>
+<div class="center" id="whiteboards">
+  <%= render partial: "whiteboards/whiteboard", collection: @whiteboards %>
 </div>
 <div class="center">
-  <%- @whiteboards.each do |whiteboard| -%>
-    <%= link_to whiteboard_path(whiteboard), class: "whiteboard_thumbnail", data: { "no-turbolink" => true } do %>
-      <%= cl_image_tag whiteboard.canvas_url(:thumbnail), width: "200", height: "100" %>
-    <%- end -%>
-  <%- end -%>
+  <%= will_paginate @whiteboards %>
 </div>

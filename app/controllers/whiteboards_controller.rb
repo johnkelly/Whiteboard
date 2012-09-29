@@ -3,7 +3,7 @@ class WhiteboardsController < ApplicationController
   before_filter :find_models
 
   def index
-    @whiteboards = @subscription.drawings
+    @whiteboards = @subscription.drawings.page(params[:page]).per_page(10)
   end
 
   def create

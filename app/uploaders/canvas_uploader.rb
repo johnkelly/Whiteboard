@@ -31,7 +31,7 @@ class CanvasUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumbnail do
-    process :resize_to_fit => [200, 100]
+    process :resize_to_fit => [500, 250]
   end
 
   # def extension_white_list

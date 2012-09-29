@@ -1,0 +1,3 @@
+  <%= link_to whiteboard_path(whiteboard), class: "whiteboard_thumbnail", data: { "no-turbolink" => true } do %>
+    <%= cl_image_tag whiteboard.canvas_url(:thumbnail), width: "500", height: "250" %>
+  <%- end -%>
