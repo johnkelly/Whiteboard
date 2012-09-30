@@ -1,4 +1,4 @@
-jQuery ->
+infinite_scrolling_pagination = ->
   if $('.pagination').length
     $(window).scroll ->
       url = $('.pagination .next_page a').attr('href')
@@ -6,3 +6,10 @@ jQuery ->
         $('.pagination').text("Fetching more products...")
         $.getScript(url)
     $(window).scroll()
+
+jQuery ->
+  infinite_scrolling_pagination()
+
+$(document).bind('page:change', ->
+  infinite_scrolling_pagination()
+)
