@@ -88,14 +88,16 @@ jQuery ->
       250
     )
 
-    $('[data-behavior~=pen_tool]').on 'click', ->
+    $('[data-behavior~=pen_tool]').on 'click', (e) ->
+      e.preventDefault()
       active_tool = "pen_tool"
       $('a').removeClass('selected')
       $(@).addClass('selected')
 
       color = last_color
 
-    $('[data-behavior~=erase_tool]').on 'click', ->
+    $('[data-behavior~=erase_tool]').on 'click', (e) ->
+      e.preventDefault()
       active_tool = "erase_tool"
       $('a').removeClass('selected')
       $(@).addClass('selected')
@@ -108,6 +110,14 @@ jQuery ->
         active_tool = false
       color = $(@).val()
       last_color = color
+
+    $('[data-behavior~=erase_all_tool]').on 'click', (e) ->
+      e.preventDefault()
+      if confirm "Are you sure?"
+        context.save()
+        context.setTransform(1,0,0,1,0,0)
+        context.clearRect(0, 0, canvas.width, canvas.height)
+        context.restore()
 
     $('[data-behavior~=save_tool]').on 'click', ->
       $('#canvas_save').css('visibility', 'visible')
