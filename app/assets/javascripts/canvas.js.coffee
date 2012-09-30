@@ -118,6 +118,7 @@ jQuery ->
         context.setTransform(1,0,0,1,0,0)
         context.clearRect(0, 0, canvas.width, canvas.height)
         context.restore()
+        clear_canvas(canvas, context)
 
     $('[data-behavior~=save_tool]').on 'click', ->
       $('#canvas_save').css('visibility', 'visible')
