@@ -21,7 +21,7 @@ prevent_right_click_on_canvas = ->
 jQuery ->
   if $('canvas').length > 0
     pusher = new Pusher($('meta[name="pusher-key"]').attr('content'))
-    channel = pusher.subscribe('private-drawing')
+    channel = pusher.subscribe("private-#{$('canvas').data('channel')}")
 
     canvas = $('canvas').get(0)
     canvas.width = 980

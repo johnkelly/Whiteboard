@@ -28,4 +28,22 @@ describe Drawing do
       whiteboard.canvas.should be_present
     end
   end
+
+  describe "ensure_channel_name" do
+    let(:drawing) { build(:drawing) }
+
+    it "creates a 64 secure random string if drawing doesn't have one" do
+      drawing.channel_name.should be_blank
+      drawing.save!
+      drawing.reload.channel_name.should be_present
+    end
+
+    it "does not change the channel name on save if one already exists" do
+      drawing.save!
+      channel_name = drawing.reload.channel_name
+      channel_name.should be_present
+      drawing.save!
+      drawing.reload.channel_name.should == channel_name
+    end
+  end
 end

@@ -8,6 +8,8 @@ class Drawing < ActiveRecord::Base
 
   attr_accessible :canvas, :canvas_cache
 
+  before_save :ensure_channel_name
+
   default_scope order: 'updated_at desc'
 
   def self.blank_canvas
@@ -23,5 +25,9 @@ class Drawing < ActiveRecord::Base
 
     self.canvas = file
     self.save!
+  end
+
+  def ensure_channel_name
+    self.channel_name = SecureRandom.hex(64) if channel_name.blank?
   end
 end

@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904052124) do
+ActiveRecord::Schema.define(:version => 20120930045731) do
 
   create_table "drawings", :force => true do |t|
     t.integer  "subscription_id"
     t.string   "canvas"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "channel_name"
   end
 
   add_index "drawings", ["subscription_id"], :name => "index_drawings_on_subscription_id"

@@ -14,7 +14,7 @@
     <%= link_to "Save", "", class: "btn", remote: true, data: { behavior: "save_tool", url: whiteboard_path(@whiteboard) } %>
 </div>
 <div class="center">
-  <canvas data-url="<%= @whiteboard.canvas.url %>">
+  <canvas data-url="<%= @whiteboard.canvas.url %>" data-channel="<%= @whiteboard.channel_name %>">
     Your browser does not support HTML5.  Please use the latest version of Google Chrome, Safari, FireFox, or use Internet Explorer 6+ with the free Google Chrome Plugin, which can be downloaded <%= link_to "here", "http://www.google.com/chromeframe" %>.
   </canvas>
 </div>
