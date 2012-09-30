@@ -3,12 +3,12 @@
 </div>
 <div class="center canvas_navbar">
     <a class="btn" data-behavior="pen_tool">Pen</a>
-    <a class="btn" data-behavior="erase_tool">Erase</a>
     <input type="color" data-behavior="color_picker" class="color_picker" />
+    <a class="btn" data-behavior="erase_tool">Erase</a>
     <%= link_to "Save", "", class: "btn", remote: true, data: { behavior: "save_tool", url: whiteboard_path(@whiteboard) } %>
 </div>
 <div class="center">
   <canvas data-url="<%= @whiteboard.canvas.url %>">
-    Your browser does not support HTML5.  Please use the latest version of Google Chrome, Safari, FireFox, or use Internet Explorer 7+ with the free Google Chrome Plugin, which can be downloaded <%= link_to "here", "http://www.google.com/chromeframe" %>.
+    Your browser does not support HTML5.  Please use the latest version of Google Chrome, Safari, FireFox, or use Internet Explorer 6+ with the free Google Chrome Plugin, which can be downloaded <%= link_to "here", "http://www.google.com/chromeframe" %>.
   </canvas>
 </div>
