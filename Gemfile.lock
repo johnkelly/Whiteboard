@@ -34,6 +34,7 @@ GEM
     bootstrap-sass (2.0.4.2)
     bootswatch-rails (0.0.12)
       railties (>= 3.1)
+    browser (0.1.5)
     builder (3.0.0)
     cache_digests (0.1.0)
       actionpack (>= 3.2)
@@ -189,6 +190,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 2.0.4.2)
   bootswatch-rails (~> 0.0.12)
+  browser (~> 0.1.5)
   cache_digests (~> 0.1.0)
   capybara
   carrierwave (~> 0.6.2)

@@ -18,6 +18,7 @@ gem 'dalli', '~> 2.1.0'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 gem 'will_paginate', '~> 3.0.3'
+gem 'browser', '~> 0.1.5'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
