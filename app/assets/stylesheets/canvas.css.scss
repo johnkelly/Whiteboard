@@ -28,3 +28,11 @@ canvas {
   background-color: #AD1D28;
   color: #fff;
 }
+
+.brush_size_label_and_range {
+  display: inline-block;
+
+  #brush_size {
+    width: 100px;
+  }
+}

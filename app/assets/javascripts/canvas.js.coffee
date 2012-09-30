@@ -38,7 +38,7 @@ jQuery ->
 
     channel.bind('client-mouse-moved', (data) ->
       for point in data.pointsToDraw
-        bresenham_line_algorithm(point[0], point[1], point[2], point[3], point[4], context)
+        bresenham_line_algorithm(point[0], point[1], point[2], point[3], point[4], context, point[5])
     )
     clear_canvas(canvas, context)
     draw_saved_image_onto_canvas(context)
@@ -72,11 +72,11 @@ jQuery ->
         y1 = mouseY
         y2 = lastY
 
-        pointsToDraw.push([x1, y1, x2, y2, color])
+        pointsToDraw.push([x1, y1, x2, y2, color, context.lineWidth])
         handleMouseMove(mouseX, mouseY, x1, y1, x2, y2, color)
 
     handleMouseMove = (mouseX, mouseY, x1, y1, x2, y2, color) ->
-      bresenham_line_algorithm(x1, y1, x2, y2, color, context)
+      bresenham_line_algorithm(x1, y1, x2, y2, color, context, context.lineWidth)
       lastX = mouseX
       lastY = mouseY
 
@@ -104,6 +104,9 @@ jQuery ->
 
       last_color = color
       color = "#FFFFFF"
+
+    $('[data-behavior~=brush_size_tool]').on 'change', ->
+      context.lineWidth = $(@).val()
 
     $('[data-behavior~=color_picker]').on 'change', ->
       if active_tool is "erase_tool"

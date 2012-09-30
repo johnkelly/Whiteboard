@@ -1,4 +1,4 @@
-window.bresenham_line_algorithm = (x1, y1, x2, y2, color, context) ->
+window.bresenham_line_algorithm = (x1, y1, x2, y2, color, context, lineWidth) ->
   steep = Math.abs(y2-y1) > Math.abs(x2-x1)
 
   if steep
@@ -29,7 +29,7 @@ window.bresenham_line_algorithm = (x1, y1, x2, y2, color, context) ->
   if y1 < y2
     yStep = 1
 
-  lineThickness = 5 - Math.sqrt((x2 - x1) * (x2- x1) + (y2 - y1) * (y2 - y1)) / 10
+  lineThickness = (5 - Math.sqrt((x2 - x1) * (x2- x1) + (y2 - y1) * (y2 - y1)) / 10) * lineWidth
 
   if lineThickness < 1
     lineThickness = 1

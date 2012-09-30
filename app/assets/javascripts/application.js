@@ -17,4 +17,5 @@
 //= require google_analytics
 //= require spectrum
 //= require algorithms
+//= require html5slider
 //= require_tree .

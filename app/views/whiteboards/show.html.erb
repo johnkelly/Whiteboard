@@ -1,9 +1,14 @@
 <div id="canvas_save" class="alert alert-info">
   Saving...
 </div>
+
 <div class="center canvas_navbar">
     <%= link_to "Pen", "", class: "btn", data: { behavior: "pen_tool" } %>
     <input type="color" data-behavior="color_picker" class="color_picker" />
+    <div class="brush_size_label_and_range">
+      <label for="brush_size">Brush Size</label>
+      <input type="range" data-behavior="brush_size_tool" min="1" max="5" step=".5" id="brush_size" value="1" />
+    </div>
     <%= link_to "Eraser", "", class: "btn", data: { behavior: "erase_tool" } %>
     <%= link_to "Erase All", "", class: "btn", data: { behavior: "erase_all_tool" } %>
     <%= link_to "Save", "", class: "btn", remote: true, data: { behavior: "save_tool", url: whiteboard_path(@whiteboard) } %>
