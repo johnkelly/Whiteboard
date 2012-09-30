@@ -6,7 +6,7 @@
     <input type="color" data-behavior="color_picker" class="color_picker" />
     <%= link_to "Eraser", "", class: "btn", data: { behavior: "erase_tool" } %>
     <%= link_to "Erase All", "", class: "btn", data: { behavior: "erase_all_tool" } %>
-    <%= link_to "Save", "", class: "btn", data: { behavior: "save_tool", url: whiteboard_path(@whiteboard) } %>
+    <%= link_to "Save", "", class: "btn", remote: true, data: { behavior: "save_tool", url: whiteboard_path(@whiteboard) } %>
 </div>
 <div class="center">
   <canvas data-url="<%= @whiteboard.canvas.url %>">
