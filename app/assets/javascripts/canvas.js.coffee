@@ -76,6 +76,7 @@ jQuery ->
         handleMouseMove(mouseX, mouseY, x1, y1, x2, y2, color)
 
     handleMouseMove = (mouseX, mouseY, x1, y1, x2, y2, color) ->
+      set_canvas_color(color, context)
       bresenham_line_algorithm(x1, y1, x2, y2, color, context, context.lineWidth)
       lastX = mouseX
       lastY = mouseY
