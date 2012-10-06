@@ -85,7 +85,6 @@ jQuery ->
       ->
         if pointsToDraw.length
           channel.trigger("client-mouse-moved", { pointsToDraw: pointsToDraw })
-          pointsToDraw = [] if pusher.connection.state is "connected"
       250
     )
 
