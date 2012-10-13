@@ -9,7 +9,7 @@ describe SubscriptionsController do
 
       it "creates a new subscription" do
         -> { post :create, plan_id: 1 }.should change(Subscription, :count).by(1)
-        response.should redirect_to root_url
+        response.should redirect_to whiteboards_url
       end
 
       it "fails if no plan provided" do
@@ -34,7 +34,7 @@ describe SubscriptionsController do
         -> { post :create, plan_id: 3 }.should_not change(Subscription, :count)
 
         subscription.reload.plan_id.should == 3
-        response.should redirect_to root_url
+        response.should redirect_to whiteboards_url
       end
 
       it "fails if no plan provided" do

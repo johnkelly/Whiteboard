@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
     end
     if @subscription.save
       flash[:analytics] = "/vp/add_subscription"
-      redirect_to root_url, notice: "Your subscription plan has been updated."
+      redirect_to whiteboards_url, notice: "Your subscription plan has been updated."
     else
       redirect_to plans_url, alert: "There was an error changing your subscription plan.  Please try again later.  If the problem continues, please update your billing information."
     end
