@@ -33,6 +33,7 @@ class WhiteboardsController < ApplicationController
   private
 
   def find_models
-    @subscription = current_user.subscription
+    @subscriber = current_user.subscriber
+    @subscription = @subscriber.subscription
   end
 end

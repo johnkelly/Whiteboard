@@ -13,4 +13,22 @@ describe SubscribersController do
     # it { should assign_to(:whiteboards).with(subscription.drawings) }
     it { should respond_with(:success) }
   end
+
+  describe "add_user" do
+    context "success" do
+      before { post :add_user, user: { email: "random@example.com", password: "password" }}
+      it { should assign_to(:subscriber).with(user.subscriber) }
+      it { should assign_to(:user).with(be_a_new_record) }
+      it { should set_the_flash[:notice] }
+      it { should redirect_to subscribers_url }
+    end
+
+    context "error" do
+      before { post :add_user, user: { }}
+      it { should assign_to(:subscriber).with(user.subscriber) }
+      it { should assign_to(:user).with(be_a_new_record) }
+      it { should set_the_flash[:alert] }
+      it { should redirect_to subscribers_url }
+    end
+  end
 end

@@ -14,7 +14,7 @@ FactoryGirl.define do
     end
 
     trait :subscriber_user do |f|
-      association :subscriber
+      association :subscriber, factory: :subscriber
       sequence(:email) {|n| "subscriber#{n}@example.com" }
     end
 

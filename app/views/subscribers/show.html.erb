@@ -9,11 +9,23 @@
   <div class="span6 hero-unit">
     <h2><%= pluralize @users.size, "User" %></h2>
     <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_users %> users.</p>
+    <div class="pop_up_form">
+    <h2 class="ml15">Add User</h2>
+    <%= form_for @user, url: add_user_subscribers_url do |f| %>
+      <div class="input-prepend inline mr5">
+        <span class="add-on"><i class="icon-envelope"></i></span><%= f.email_field :email, class: "input-small", placeholder: "Email" %>
+        <span class="add-on"><i class="icon-lock"></i></span><%= f.password_field :password, class: "input-small", placeholder: "Password" %>
+      </div>
+      <%= f.submit "Add", data: { disable_with: "Adding..."}, class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <div class="mt15">
     <ul>
       <% cache @users do %>
         <%= render partial: "subscribers/user", collection: @users %>
       <% end %>
     </ul>
+  </div>
   </div>
   <div class="span6 hero-unit">
     <h2><%= pluralize @whiteboards.size, "Whiteboard" %></h2>

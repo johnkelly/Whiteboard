@@ -3,13 +3,14 @@ require 'spec_helper'
 describe WhiteboardsController do
   let(:subscription) { create(:basic_subscription) }
   let(:whiteboard) { create(:drawing, subscription: subscription) }
+  let(:user) { create(:subscriber_user, subscriber: subscription.subscriber) }
 
-  before { sign_in subscription.user }
+  before { sign_in user }
 
   describe "#index" do
     before { get :index }
-    it { should assign_to(:subscription).with(subscription) }
-    it { should assign_to(:whiteboards).with(subscription.drawings) }
+    it { should assign_to(:subscription).with(user.subscriber.subscription) }
+    it { should assign_to(:whiteboards).with(user.subscriber.subscription.drawings) }
     it { should respond_with(:success) }
   end
 

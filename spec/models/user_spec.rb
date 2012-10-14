@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   let(:user) { create(:trial_user) }
   let(:customer) { create(:customer) }
-  let(:subscriber) { create(:basic_subscription).user }
+  let(:subscriber_user) { create(:basic_subscription).user }
 
   describe "save_stripe_customer" do
     it "calls create new stripe customer for non-customer" do
@@ -40,7 +40,7 @@ describe User do
   describe "customer?" do
     it "returns true if the user has added billing info to stripe" do
       customer.customer?.should be_true
-      subscriber.customer?.should be_true
+      subscriber_user.customer?.should be_true
     end
 
     it "returns false if not a stripe customer" do
@@ -49,12 +49,11 @@ describe User do
   end
 
   describe "subscriber?" do
-    it "returns true if the user has a subscription" do
-      subscriber.subscriber?.should be_true
+    it "returns true if the user has a subscriber" do
+      subscriber_user.subscriber?.should be_true
     end
 
-    it "returns false if the user does not have a subscription" do
-      customer.subscriber?.should be_false
+    it "returns false if the user does not have a subscriber" do
       user.subscriber?.should be_false
     end
   end

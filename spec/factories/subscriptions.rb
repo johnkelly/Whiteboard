@@ -18,5 +18,9 @@ FactoryGirl.define do
     factory :basic_subscription, traits: [:tier_1]
     factory :professional_subscription, traits: [:tier_2]
     factory :elite_subscription, traits: [:tier_3]
+
+    after(:create) do |subscription|
+      subscription.drawings << FactoryGirl.create(:drawing, subscription: subscription)
+    end
   end
 end

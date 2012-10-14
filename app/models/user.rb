@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessor :stripe_card_token
 
   before_destroy :delete_stripe_customer, if: :stripe_customer_token
+  before_create :enforce_plan_limit
 
   def save_stripe_customer
     if valid? && valid_credit_card?
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def subscriber?
-    subscription.present?
+    subscriber.present?
   end
 
   def create_new_stripe_customer
@@ -54,6 +55,15 @@ class User < ActiveRecord::Base
     unless Rails.env.test?
       customer = Stripe::Customer.retrieve(stripe_customer_token)
       customer.delete
+    end
+  end
+
+  def enforce_plan_limit
+    if self.try(:subscriber).try(:subscription).present?
+      if self.subscriber.users.count >= self.subscriber.subscription.plan_allowed_users
+      errors.add(:base, "All the accounts for your company have been taken.  Please contact your administrator to upgrade your company's account to a higher plan.")
+      false
+      end
     end
   end
 

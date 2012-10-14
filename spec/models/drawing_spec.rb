@@ -53,16 +53,16 @@ describe Drawing do
 
     context "under plan limit" do
       it "saves the drawing" do
-        subscription.drawings.count.should == 0
-        subscription.should_receive(:plan_allowed_whiteboards).and_return(1)
+        subscription.drawings.count.should == 1
+        subscription.should_receive(:plan_allowed_whiteboards).and_return(2)
         drawing.save.should be_true
       end
     end
 
     context "over plan limit" do
       it "returns with errors on create" do
-        subscription.drawings.count.should == 0
-        subscription.should_receive(:plan_allowed_whiteboards).and_return(0)
+        subscription.drawings.count.should == 1
+        subscription.should_receive(:plan_allowed_whiteboards).and_return(1)
         drawing.save.should be_false
       end
     end
