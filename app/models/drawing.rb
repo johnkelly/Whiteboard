@@ -9,6 +9,7 @@ class Drawing < ActiveRecord::Base
   attr_accessible :canvas, :canvas_cache
 
   before_save :ensure_channel_name
+  before_create :enforce_plan_limit
 
   default_scope order: 'updated_at desc'
 
@@ -29,5 +30,12 @@ class Drawing < ActiveRecord::Base
 
   def ensure_channel_name
     self.channel_name = SecureRandom.hex(64) if channel_name.blank?
+  end
+
+  def enforce_plan_limit
+    if self.subscription.drawings.count >= self.subscription.plan_allowed_whiteboards
+      errors.add(:base, "You have used all the whiteboards available at your subscription level.  Please upgrade your account to a higher plan or reuse whiteboards.")
+      false
+    end
   end
 end

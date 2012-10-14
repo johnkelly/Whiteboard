@@ -46,4 +46,25 @@ describe Drawing do
       drawing.reload.channel_name.should == channel_name
     end
   end
+
+  describe "enforce_plan_limit" do
+    let(:drawing) { build(:drawing) }
+    let(:subscription) { drawing.subscription }
+
+    context "under plan limit" do
+      it "saves the drawing" do
+        subscription.drawings.count.should == 0
+        subscription.should_receive(:plan_allowed_whiteboards).and_return(1)
+        drawing.save.should be_true
+      end
+    end
+
+    context "over plan limit" do
+      it "returns with errors on create" do
+        subscription.drawings.count.should == 0
+        subscription.should_receive(:plan_allowed_whiteboards).and_return(0)
+        drawing.save.should be_false
+      end
+    end
+  end
 end

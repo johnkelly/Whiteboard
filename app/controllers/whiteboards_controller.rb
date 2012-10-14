@@ -9,8 +9,12 @@ class WhiteboardsController < ApplicationController
   def create
     @whiteboard = @subscription.drawings.new
     @whiteboard.canvas = Drawing.blank_canvas
-    @whiteboard.save!
-    redirect_to whiteboard_path(@whiteboard)
+    if @whiteboard.save
+      redirect_to whiteboard_url(@whiteboard)
+    else
+      flash[:alert] = @whiteboard.errors.full_messages.first
+      redirect_to whiteboards_url
+    end
   end
 
   def update
