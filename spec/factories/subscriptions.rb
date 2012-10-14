@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :subscription do |f|
-    association :user, factory: :subscriber
+    association :user, factory: :subscriber_user
+    association :subscriber
 
     trait :tier_1 do
       plan_id 1

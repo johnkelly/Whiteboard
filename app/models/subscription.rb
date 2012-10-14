@@ -1,12 +1,12 @@
 class Subscription < ActiveRecord::Base
   belongs_to :user
+  belongs_to :subscriber
   has_many :drawings, dependent: :destroy
 
-  validates_presence_of :user_id
-  validates_presence_of :plan_id
-  validates_uniqueness_of :user_id
+  validates_presence_of :user_id, :subscriber_id, :plan_id
+  validates_uniqueness_of :user_id, :subscriber_id
 
-  attr_accessible :plan_id
+  attr_accessible :plan_id, :subscriber_id
 
   before_save :update_stripe_subscription
   before_destroy :cancel_stripe_subscription

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_one :subscription, dependent: :destroy
+  belongs_to :subscriber
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

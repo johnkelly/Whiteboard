@@ -8,16 +8,18 @@ FactoryGirl.define do
     end
 
     trait :customer do
+      association :subscriber
       sequence(:email) {|n| "customer#{n}@example.com" }
       stripe_customer_token 'C12345'
     end
 
-    trait :subscriber do |f|
+    trait :subscriber_user do |f|
+      association :subscriber
       sequence(:email) {|n| "subscriber#{n}@example.com" }
     end
 
     factory :trial_user, traits: [:trial_user]
     factory :customer, traits: [:customer]
-    factory :subscriber, traits: [:customer, :subscriber]
+    factory :subscriber_user, traits: [:customer, :subscriber_user]
   end
 end

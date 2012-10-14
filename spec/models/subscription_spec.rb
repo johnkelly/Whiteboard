@@ -6,9 +6,13 @@ describe Subscription do
   describe "attributes" do
     it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:plan_id) }
+    it { should validate_presence_of(:subscriber_id) }
+
     it { should validate_uniqueness_of(:user_id) }
+    it { should validate_uniqueness_of(:subscriber_id) }
 
     it { should belong_to(:user) }
+    it { should belong_to(:subscriber) }
     it { should have_many(:drawings).dependent(:destroy) }
     it { should_not allow_mass_assignment_of(:user_id) }
   end

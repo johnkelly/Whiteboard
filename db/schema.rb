@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930045731) do
+ActiveRecord::Schema.define(:version => 20121014001955) do
 
   create_table "drawings", :force => true do |t|
     t.integer  "subscription_id"
@@ -23,13 +23,23 @@ ActiveRecord::Schema.define(:version => 20120930045731) do
 
   add_index "drawings", ["subscription_id"], :name => "index_drawings_on_subscription_id"
 
+  create_table "subscribers", :force => true do |t|
+    t.integer  "subscription_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "subscribers", ["subscription_id"], :name => "index_subscribers_on_subscription_id"
+
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "plan_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "subscriber_id"
   end
 
+  add_index "subscriptions", ["subscriber_id"], :name => "index_subscriptions_on_subscriber_id"
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id", :unique => true
 
   create_table "users", :force => true do |t|
@@ -46,9 +56,11 @@ ActiveRecord::Schema.define(:version => 20120930045731) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "stripe_customer_token"
+    t.integer  "subscriber_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["subscriber_id"], :name => "index_users_on_subscriber_id"
 
 end
