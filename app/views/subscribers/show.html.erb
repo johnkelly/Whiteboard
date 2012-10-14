@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1 class="center">
+    Subscribed to: <%= @subscription.plan_name %> Plan
+    <%= link_to "Change", plans_path, class: "btn-mini btn-info vert-middle"  %>
+    <%= link_to "Cancel", subscription_path(@subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn-mini btn-warning inline vert-middle"  %>
+  </h1>
+</div>
+<div class="row-fluid mb30">
+  <div class="span6 hero-unit">
+    <h2><%= pluralize @users.size, "User" %></h2>
+    <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_users %> users.</p>
+    <ul>
+      <% cache @users do %>
+        <%= render partial: "subscribers/user", collection: @users %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span6 hero-unit">
+    <h2><%= pluralize @whiteboards.size, "Whiteboard" %></h2>
+    <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_whiteboards %> whiteboards.</p>
+  </div>
+</div>
+

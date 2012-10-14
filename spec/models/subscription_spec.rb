@@ -54,4 +54,44 @@ describe Subscription do
       subscription.plan_name.should == "Enterprise"
     end
   end
+
+  describe "plan_allowed_users" do
+    it "returns 5 for plan 1" do
+      subscription.plan_allowed_users.should == 5
+    end
+
+    it "returns 25 for plan 2" do
+      subscription.plan_id = 2
+      subscription.save!
+
+      subscription.plan_allowed_users.should == 25
+    end
+
+    it "returns 125 for plan 3" do
+      subscription.plan_id = 3
+      subscription.save!
+
+      subscription.plan_allowed_users.should == 125
+    end
+  end
+
+  describe "plan_allowed_whiteboards" do
+    it "returns 500 for plan 1" do
+      subscription.plan_allowed_whiteboards.should == 500
+    end
+
+    it "returns 5000 for plan 2" do
+      subscription.plan_id = 2
+      subscription.save!
+
+      subscription.plan_allowed_whiteboards.should == 5000
+    end
+
+    it "returns 50000 for plan 3" do
+      subscription.plan_id = 3
+      subscription.save!
+
+      subscription.plan_allowed_whiteboards.should == 50000
+    end
+  end
 end

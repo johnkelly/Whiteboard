@@ -22,3 +22,4 @@ cancel_user_registration GET    /users/cancel(.:format)        registrations#can
               whiteboard GET    /whiteboards/:id(.:format)     whiteboards#show
                          PUT    /whiteboards/:id(.:format)     whiteboards#update
        auth_pusher_index POST   /pusher/auth(.:format)         pusher#auth
+             subscribers GET    /subscribers(.:format)         subscribers#show

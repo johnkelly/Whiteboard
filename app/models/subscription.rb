@@ -55,6 +55,33 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  def plan_allowed_users
+    case plan_id
+      when 1
+        5
+      when 2
+        25
+      when 3
+        125
+      else
+        "Error"
+    end
+  end
+
+  def plan_allowed_whiteboards
+    case plan_id
+      when 1
+        500
+      when 2
+        5000
+      when 3
+        50000
+      else
+        "Error"
+    end
+  end
+
+
   private
 
   def valid_credit_card?(customer)

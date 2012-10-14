@@ -11,7 +11,8 @@
       <div class="nav-collapse">
         <ul class="nav">
           <%- if current_user.try(:subscription) -%>
-            <li><%= link_to "Whiteboards <i class='icon-briefcase icon-white'></i>".html_safe, whiteboards_path %></li>
+            <li><%= link_to "Whiteboards <i class='icon-th-large icon-white'></i>".html_safe, whiteboards_path %></li>
+            <li><%= link_to "Manage <i class='icon-list-alt icon-white'></i>".html_safe, subscribers_path %></li>
           <%- else -%>
             <li><%= link_to "Pricing <i class='icon-tag icon-white'></i>".html_safe, plans_path %></li>
           <%- end -%>

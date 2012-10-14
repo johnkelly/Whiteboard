@@ -8,4 +8,5 @@ Whiteboard::Application.routes.draw do
   resources :pusher, only: %w[] do
     collection { post :auth }
   end
+  resource :subscribers, only: %w[show]
 end
