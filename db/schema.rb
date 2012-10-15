@@ -24,12 +24,9 @@ ActiveRecord::Schema.define(:version => 20121014001955) do
   add_index "drawings", ["subscription_id"], :name => "index_drawings_on_subscription_id"
 
   create_table "subscribers", :force => true do |t|
-    t.integer  "subscription_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "subscribers", ["subscription_id"], :name => "index_subscribers_on_subscription_id"
 
   create_table "subscriptions", :force => true do |t|
     t.integer  "user_id"
