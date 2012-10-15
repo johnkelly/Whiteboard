@@ -1,13 +1,15 @@
-<div class="page-header center">
-  <h1 class="inline mr15">Whiteboards
-  <%= link_to "New Whiteboard", whiteboards_path, method: :post, data: { "no-turbolink" => true }, class: "btn btn-info inline" %>
-  </h1>
-</div>
-<div class="center" id="whiteboards">
-  <% cache @whiteboards do %>
-    <%= render partial: "whiteboards/whiteboard", collection: @whiteboards %>
-  <% end %>
-</div>
-<div class="center">
-  <%= will_paginate @whiteboards %>
-</div>
+<% if @subscription.present? %>
+  <div class="page-header center">
+    <h1 class="inline mr15">Whiteboards
+    <%= link_to "New Whiteboard", whiteboards_path, method: :post, data: { "no-turbolink" => true }, class: "btn btn-info inline" %>
+    </h1>
+  </div>
+  <div class="center" id="whiteboards">
+    <% cache @whiteboards do %>
+      <%= render partial: "whiteboards/whiteboard", collection: @whiteboards %>
+    <% end %>
+  </div>
+  <div class="center">
+    <%= will_paginate @whiteboards %>
+  </div>
+<% end %>

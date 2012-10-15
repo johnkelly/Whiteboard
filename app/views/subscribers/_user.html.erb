@@ -1,5 +1,8 @@
 <% cache user do %>
   <li class="large-font">
     <%= user.email %>
+    <% if user.customer? %>
+      <span class="label label-info">Account Admin</span>
+    <% end %>
   </li>
 <% end %>

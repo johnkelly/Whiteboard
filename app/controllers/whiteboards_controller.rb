@@ -3,7 +3,11 @@ class WhiteboardsController < ApplicationController
   before_filter :find_models
 
   def index
-    @whiteboards = @subscription.drawings.page(params[:page]).per_page(10)
+    if @subscription
+      @whiteboards = @subscription.drawings.page(params[:page]).per_page(10)
+    else
+      flash[:alert] = "You are currently not in a subscription. Please contact your account administrator."
+    end
   end
 
   def create

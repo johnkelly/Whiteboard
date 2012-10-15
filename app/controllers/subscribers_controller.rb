@@ -7,6 +7,7 @@ class SubscribersController < ApplicationController
     @subscription = @subscriber.subscription
     @whiteboards = @subscription.drawings if @subscription
     @user = User.new
+    flash.now[:notice] = "Your account admin will be able to change plans, update billing info, and delete your subscription from here." unless current_user.customer?
   end
 
   def add_user

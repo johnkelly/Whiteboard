@@ -1,15 +1,21 @@
 <div class="page-header">
   <h1 class="center">
-    Subscribed to: <%= @subscription.plan_name %> Plan
-    <%= link_to "Change", plans_path, class: "btn-mini btn-info vert-middle"  %>
-    <%= link_to "Update Billing Info", new_customer_path, class: "btn-mini btn-success vert-middle", data: { "no-turbolink" => true } %>
-    <%= link_to "Delete", subscription_path(@subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn-mini btn-primary inline vert-middle"  %>
+    <% if @subscription.present? %>
+      Subscribed to: <%= @subscription.plan_name %> Plan
+    <% else %>
+      Subscribed to: <b>None</b>
+    <% end %>
+    <% if current_user.customer? %>
+      <%= link_to "Change", plans_path, class: "btn-mini btn-info vert-middle"  %>
+      <%= link_to "Update Billing Info", new_customer_path, class: "btn-mini btn-success vert-middle", data: { "no-turbolink" => true } %>
+      <%= link_to "Delete", subscription_path(@subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn-mini btn-primary inline vert-middle" if @subscription.present? %>
+    <% end %>
   </h1>
 </div>
 <div class="row-fluid mb30">
   <div class="span6 hero-unit">
     <h2><%= pluralize @users.size, "User" %></h2>
-    <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_users %> users.</p>
+    <p class="lead">Your plan allows for up to <%= @subscription.try(:plan_allowed_users) || 0 %> users.</p>
     <div class="pop_up_form">
     <h2 class="ml15">Add User</h2>
     <%= form_for @user, url: add_user_subscribers_url do |f| %>
@@ -29,8 +35,10 @@
   </div>
   </div>
   <div class="span6 hero-unit">
-    <h2><%= pluralize @whiteboards.size, "Whiteboard" %></h2>
-    <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_whiteboards %> whiteboards.</p>
+    <% if @subscription.present? %>
+      <h2><%= pluralize @whiteboards.size, "Whiteboard" %></h2>
+      <p class="lead">Your plan allows for up to <%= @subscription.plan_allowed_whiteboards %> whiteboards.</p>
+    <% end %>
   </div>
 </div>
 

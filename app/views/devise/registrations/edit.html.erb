@@ -6,8 +6,6 @@
   <h2>Current Subscription</h2>
   <%- if current_user.try(:subscriber).try(:subscription).present? -%>
       <p class="lead">Subscribed to: <i><%= current_user.subscriber.subscription.plan_name %> Plan</i></p>
-      <%= link_to "Change Subscription Plans", plans_path, class: "btn btn-info"  %>
-      <%= link_to "Cancel Subscription", subscription_path(current_user.subscriber.subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn btn-primary inline"  %>
   <%- else -%>
     <p>You are currently not subscribed to any plans.</p>
     <%= link_to "Add a Subscription", plans_path, class: "btn btn-success"  %>
