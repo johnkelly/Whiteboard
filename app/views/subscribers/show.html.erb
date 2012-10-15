@@ -1,3 +1,8 @@
+<% if @subscriber.trial? %>
+  <div class="alert alert-success">
+    <p class="center">You have <b><%= @subscriber.days_left_in_trial %> days</b> left in your trial. You will be automatically upgraded to a starter plan when your trial expires.</p>
+  </div>
+<% end %>
 <div class="page-header">
   <h1 class="center">
     <% if @subscription.present? %>
