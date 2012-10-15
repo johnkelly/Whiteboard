@@ -12,7 +12,7 @@ class SubscriptionsController < ApplicationController
       flash[:analytics] = "/vp/add_subscription"
       redirect_to whiteboards_url, notice: "Your subscription plan has been updated."
     else
-      redirect_to plans_url, alert: "There was an error changing your subscription plan.  Please try again later.  If the problem continues, please update your billing information."
+      redirect_to plans_url, alert: @subscription.errors.full_messages.first
     end
   end
 

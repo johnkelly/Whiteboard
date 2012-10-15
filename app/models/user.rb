@@ -69,6 +69,11 @@ class User < ActiveRecord::Base
       errors.add(:base, "All the accounts for your company have been taken.  Please contact your administrator to upgrade your company's account to a higher plan.")
       false
       end
+    elsif subscriber.present?
+      if subscriber.users.count > 5 && subscriber.subscription.blank?
+        errors.add(:base, "You must have a subscription to add more than 5 users.")
+        false
+      end
     end
   end
 

@@ -8,7 +8,7 @@ class Subscription < ActiveRecord::Base
 
   attr_accessible :plan_id, :user_id
 
-  before_save :update_stripe_subscription
+  before_save :check_user_limit, :update_stripe_subscription
   before_destroy :cancel_stripe_subscription
 
   def update_stripe_subscription
@@ -19,9 +19,11 @@ class Subscription < ActiveRecord::Base
           if valid_credit_card?(customer)
             customer.update_subscription(plan: plan_id)
           else
+            errors.add(:base, "There was an error changing your subscription plan.  Please try again later.  If the problem continues, please update your billing information.")
             false
           end
         else
+          errors.add(:base, "There was an error changing your subscription plan.  Please try again later.  If the problem continues, please update your billing information.")
           false
         end
       end
@@ -65,6 +67,13 @@ class Subscription < ActiveRecord::Base
         125
       else
         "Error"
+    end
+  end
+
+  def check_user_limit
+    if subscriber.users.size > plan_allowed_users
+      errors.add(:base, "The plan you are switching to has a lower user limit.  Please delete users before switching plans.")
+      false
     end
   end
 

@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Subscription do
-  let!(:subscription) { create(:basic_subscription) }
+  let(:user) { create(:subscriber_user) }
+  let!(:subscription) { create(:basic_subscription, subscriber: user.subscriber) }
 
   describe "attributes" do
     it { should validate_presence_of(:user_id) }
@@ -92,6 +93,24 @@ describe Subscription do
       subscription.save!
 
       subscription.plan_allowed_whiteboards.should == 50000
+    end
+  end
+
+  describe "check_user_limit" do
+    context "does not save the subscription" do
+      it "returns false" do
+        subscription.subscriber.users.should_receive(:size).and_return(6)
+        subscription.should_receive(:plan_allowed_users).and_return(5)
+        subscription.save.should be_false
+      end
+    end
+
+    context "saves the subscription" do
+      it "returns true" do
+        subscription.subscriber.users.should_receive(:size).and_return(4)
+        subscription.should_receive(:plan_allowed_users).and_return(5)
+        subscription.save.should be_true
+      end
     end
   end
 end
