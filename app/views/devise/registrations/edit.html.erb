@@ -3,14 +3,11 @@
 </div>
 
 <div class="form-horizontal well span-7 offset-1">
-  <h2>My Biling Information</h2>
-    <%= link_to "Update Billing Info", new_customer_path, class: "btn btn-info", data: { "no-turbolink" => true } %>
-  <hr/>
   <h2>Current Subscription</h2>
-  <%- if current_user.subscription.present? -%>
-      <p class="lead">Subscribed to: <i><%= current_user.subscription.plan_name %> Plan</i></p>
+  <%- if current_user.try(:subscriber).try(:subscription).present? -%>
+      <p class="lead">Subscribed to: <i><%= current_user.subscriber.subscription.plan_name %> Plan</i></p>
       <%= link_to "Change Subscription Plans", plans_path, class: "btn btn-info"  %>
-      <%= link_to "Cancel my Subscription", subscription_path(current_user.subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn btn-warning inline"  %>
+      <%= link_to "Cancel Subscription", subscription_path(current_user.subscriber.subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn btn-primary inline"  %>
   <%- else -%>
     <p>You are currently not subscribed to any plans.</p>
     <%= link_to "Add a Subscription", plans_path, class: "btn btn-success"  %>
@@ -44,5 +41,5 @@
     <div class="mt15"><%= f.submit "Update", data: { disable_with: "Updating..."} %></div>
   <% end %>
   <hr/>
-   <%= link_to "Close Account", registration_path(resource_name), data: { "no-turbolink" => true, confirm: "Are you sure?  All user data will be erased!", disable_with: "Deleting..." }, method: :delete, class: "btn-warning mb30" %>
+   <%= link_to "Close Account", registration_path(resource_name), data: { "no-turbolink" => true, confirm: "Are you sure?  All user data will be erased!", disable_with: "Deleting..." }, method: :delete, class: "btn-mini btn-primary mb30" %>
 </div>

@@ -6,7 +6,7 @@ class Subscription < ActiveRecord::Base
   validates_presence_of :user_id, :subscriber_id, :plan_id
   validates_uniqueness_of :user_id, :subscriber_id
 
-  attr_accessible :plan_id, :subscriber_id
+  attr_accessible :plan_id, :user_id
 
   before_save :update_stripe_subscription
   before_destroy :cancel_stripe_subscription

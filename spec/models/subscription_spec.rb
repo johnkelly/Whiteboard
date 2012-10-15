@@ -14,7 +14,7 @@ describe Subscription do
     it { should belong_to(:user) }
     it { should belong_to(:subscriber) }
     it { should have_many(:drawings).dependent(:destroy) }
-    it { should_not allow_mass_assignment_of(:user_id) }
+    it { should_not allow_mass_assignment_of(:subscriber_id) }
   end
 
   describe "update_stripe_subscription" do

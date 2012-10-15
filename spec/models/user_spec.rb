@@ -57,4 +57,18 @@ describe User do
       user.subscriber?.should be_false
     end
   end
+
+  describe "trial_user?" do
+    context "user less than 30 days old" do
+      it "returns true" do
+        user.trial_user?.should be_true
+      end
+    end
+    context "user older than 30 days old" do
+      it "returns false" do
+        user.stub(:created_at).and_return(31.days.ago)
+        user.trial_user?.should be_false
+      end
+    end
+  end
 end

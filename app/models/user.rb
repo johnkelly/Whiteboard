@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_one :subscription, dependent: :destroy
   belongs_to :subscriber
 
   devise :database_authenticatable, :registerable,
@@ -10,6 +9,8 @@ class User < ActiveRecord::Base
 
   before_destroy :delete_stripe_customer, if: :stripe_customer_token
   before_create :enforce_plan_limit
+
+  delegate :subscription, to: :subscriber
 
   def save_stripe_customer
     if valid? && valid_credit_card?
@@ -34,6 +35,10 @@ class User < ActiveRecord::Base
 
   def subscriber?
     subscriber.present?
+  end
+
+  def trial_user?
+    (Time.now - created_at.to_time) < 1.month.to_i
   end
 
   def create_new_stripe_customer

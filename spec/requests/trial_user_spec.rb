@@ -66,22 +66,22 @@ describe "Signed in user" do
       page.should have_selector('.page-header h1', text: "Pricing")
     end
 
-    it "can update billing information" do
-      click_link "Update Billing Info"
-      page.should have_selector('.page-header h1', text: "Billing Information")
-      within("form") do
-        fill_in 'Credit Card Number', with: "4242424242424242"
-        fill_in 'Security Code on Card (CVC)', with: "123"
-        select('8 - August', from: 'card_month')
-        select(2.years.from_now.year.to_s, from: 'card_year')
+    # it "can update billing information" do
+    #   click_link "Update Billing Info"
+    #   page.should have_selector('.page-header h1', text: "Billing Information")
+    #   within("form") do
+    #     fill_in 'Credit Card Number', with: "4242424242424242"
+    #     fill_in 'Security Code on Card (CVC)', with: "123"
+    #     select('8 - August', from: 'card_month')
+    #     select(2.years.from_now.year.to_s, from: 'card_year')
 
-        fill_in 'Full Name as it appears on card', with: "A Tester"
-        fill_in 'Zip/Postal Code of Billing Address', with: "63130"
-        click_button "Add Credit card"
-      end
-      page.should have_selector('.alert.alert-info', text: "Your billing information was updated.")
-      page.should have_selector('.page-header h1', text: "Pricing")
-    end
+    #     fill_in 'Full Name as it appears on card', with: "A Tester"
+    #     fill_in 'Zip/Postal Code of Billing Address', with: "63130"
+    #     click_button "Add Credit card"
+    #   end
+    #   page.should have_selector('.alert.alert-info', text: "Your billing information was updated.")
+    #   page.should have_selector('.page-header h1', text: "Pricing")
+    # end
   end
 
   describe "Plans" do

@@ -2,7 +2,8 @@
   <h1 class="center">
     Subscribed to: <%= @subscription.plan_name %> Plan
     <%= link_to "Change", plans_path, class: "btn-mini btn-info vert-middle"  %>
-    <%= link_to "Cancel", subscription_path(@subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn-mini btn-warning inline vert-middle"  %>
+    <%= link_to "Update Billing Info", new_customer_path, class: "btn-mini btn-success vert-middle", data: { "no-turbolink" => true } %>
+    <%= link_to "Delete", subscription_path(@subscription), data: { "no-turbolink" => true, confirm: "Are you sure?  You will lose all subscription data!  This action can not be reversed!", disable_with: "Cancelling..." }, method: :delete, class: "btn-mini btn-primary inline vert-middle"  %>
   </h1>
 </div>
 <div class="row-fluid mb30">

@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe SubscribersController do
   let(:subscription) { create(:basic_subscription) }
-  let(:user) { subscription.user }
+  let(:user) { create(:subscriber_user, subscriber: subscription.subscriber) }
+
   before { sign_in user }
 
   describe "show" do

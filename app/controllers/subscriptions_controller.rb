@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
       @subscription = current_user.subscription
       @subscription.plan_id = params[:plan_id]
     else
-      @subscription = current_user.build_subscription(plan_id: params[:plan_id], subscriber_id: current_user.subscriber_id)
+      @subscription = current_user.subscriber.build_subscription(plan_id: params[:plan_id], user_id: current_user.id)
     end
     if @subscription.save
       flash[:analytics] = "/vp/add_subscription"
