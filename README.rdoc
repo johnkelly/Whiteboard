@@ -1,4 +1,7 @@
-== Welcome to Whiteboard
+== Whiteboard
+{<img src="https://codeclimate.com/github/limitingfactor/Whiteboard.png" />}[https://codeclimate.com/github/limitingfactor/Whiteboard]
+
+Whiteboard is now open source. Whiteboard is live with a Stripe test account so feel free to use trywhiteboard.com for free. Just use on of Stripe's test credit card numbers.
 
 Whiteboard is a webapp that uses HTML5 canvas technology to provide a universal way to draw on any device and store your drawings in the cloud.
 
